@@ -1,31 +1,45 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Transporter
 
-Welcome CamDiggidyDawg,
+Transporter is a Python terminal program designed to take job input with regards to transport delivery & collection details, and calculate what date and time the truck should be scheduled to load and unload at the depot. Once data is entered, it will be printed to the Transporter google sheet. A user also has the ability to look up specific jobs using the order number and the data will be printed to the Python terminal.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+*deployment*
 
-## Reminders
+*iamresponsive image*
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+## How to input data:
 
-## Creating the Heroku app
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
 
-1. `heroku/python`
-2. `heroku/nodejs`
+## Features:
+*text with screen grabs*
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+## Development:
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+- I created a google worksheet and named it Transporter
+- Utilised the walkthrough videos from the Code Institute's "love-sandwiches" project to assist with setting up my credentials using Google Cloud and enabling the Google Drive API and the Google Sheets API
+- Created a github repository using the Code Institute Python student template provided, and opened a Gitpod workspace
+- Using the help of the walkthrough videos from the Code Institute, I was able to import my json credentials file and added it to the .gitignore directory
+- Once setup, I went to my google sheet, and shared it with my project using the client email within my credentials file
+- Again using the assistance of the Code Institute walkthrough videos I was able to import the gspread library and then the Credentials class from the google.oauth2.service_account library
+- Setup the constants in the run.py file
+- Created two variables using the gspread methods to access the ggogle sheet and tested it is accessing the sheet using a print function
 
-Connect your GitHub repository and deploy as normal.
 
-## Constraints
+## Future Development:
+*text ideas on hpw to develop further*
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+## Data Model:
+*text on the data model used*
 
------
-Happy coding!
+## Testing:
+
+### Bugs
+
+### Unfixed Bugs
+
+
+## Validator Testing:
+
+
+## Credits:
+
