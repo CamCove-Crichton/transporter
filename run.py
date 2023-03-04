@@ -84,6 +84,7 @@ def validate_jname_input(string):
     return True
 
 
+# Idea and code from code institute - love-sandwiches walkthrough project
 def get_ord_no():
     """
     A function to get the order number from the user
@@ -94,7 +95,25 @@ def get_ord_no():
     print("Example: 12345\n")
 
     ord_str = input('Enter the order number here\n')
-    print(f"The order number is ORD{int(ord_str)}")
+    validate_ord_input(ord_str)
+
+
+# Idea and code from code institute - love-sandwiches walkthrough project
+def validate_ord_input(int_data):
+    """
+    Inside the try, checks if there are 5 numbers in the order number
+    and checks that the input is an integer
+    """
+    values_list = SHEET.worksheet("transport_details")
+    values = values_list.col_values(2)
+    try:
+        int(int_data)
+        if len(int_data) != 5:
+            raise ValueError(
+                f"Order no. must have 5 numbers, you entered {len(int_data)}"
+            )
+    except ValueError as e:
+        print(f"Invalid entry: {e}, please try again")
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
