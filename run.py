@@ -50,6 +50,7 @@ class Job:
 def get_job_name():
     """
     A function to get the job name from the user
+    It will repeat the request for the user input until the data is valid
     """
     while True:
         print("Please enter a job name")
@@ -81,6 +82,18 @@ def validate_jname_input(string):
         return False
 
     return True
+
+
+# Idea and code from code institute - love-sandwiches walkthrough project
+def update_transport_details(job_data):
+    """
+    Updates the transport details google sheet
+    Adds new row of data using the user inputs provided
+    """
+    print("Adding new job details to Transporter sheet...\n")
+    transport_sheet = SHEET.worksheet('transport_details')
+    transport_sheet.append_row(job_data)
+    print("Job details added successfully!\n")
 
 
 job_name = get_job_name()
