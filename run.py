@@ -46,7 +46,17 @@ class Job:
                 self.dtime, self.cdate, self.ctime]
 
 
-example = Job('Test', '012344', '7.5', '10/03/23',
-              '08:00', '11/03/23', '02:00')
+# Idea from code insitute - love-sandwiches walkthrough project
+def get_job_name():
+    """
+    A function to get the job name from the user
+    """
+    print("Please enter a job name")
+    print("The job name must consist of three or more characters")
+    print("Example: Job Name 1\n")
 
-print(example.details())
+    job_str = input('Enter the job name here: \n')
+    print(f"The job name provided is {job_str}")
+
+
+get_job_name()
