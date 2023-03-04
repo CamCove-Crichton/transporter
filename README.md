@@ -22,9 +22,10 @@ Transporter is a Python terminal program designed to take job input with regards
 - Once setup, I went to my google sheet, and shared it with my project using the client email within my credentials file
 - Again using the assistance of the Code Institute walkthrough videos I was able to import the gspread library and then the Credentials class from the google.oauth2.service_account library
 - Setup the constants in the run.py file
-- Created two variables using the gspread methods to access the ggogle sheet and tested it is accessing the sheet using a print function
-- Created a class Job to use as the data model to hold the data for the job that the user inputs and tested is works
-- Created a function to take the use inout for the job name and then used another function to validate the input for the job name
+- Created two variables using the gspread methods to access the google sheet and tested it is accessing the sheet using a print function and removed them once I confirmed it was working
+- Created a class 'Job' to use as the data model to hold the data for the job that the user inputs and tested that it works
+- Created a function to take the user input for the job name and then used another function to validate the input for the job name
+- I then used a while loop to loop through my function for the job name to repeat the request for data until it has passed the validation tests to break the loop
 
 
 
@@ -45,4 +46,6 @@ Transporter is a Python terminal program designed to take job input with regards
 
 
 ## Credits:
+
+[Code Institute](https://codeinstitute.net/)
 
