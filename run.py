@@ -23,10 +23,30 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 # love-sandwiches walkthrough
 SHEET = GSPREAD_CLIENT.open('Transporter')
 
-# transport_details & data variable ideas and code from the code institute
-# love-sandwiches walkthrough
-transport_details = SHEET.worksheet('transport_details')
 
-data = transport_details.get_all_values()
+class Job:
+    """
+    Job class to hold all user input job related
+    """
+    def __init__(self, jname, ord_no, tsize, ddate, dtime, cdate, ctime):
+        # properties
+        self.jname = jname
+        self.ord_no = ord_no
+        self.tsize = tsize
+        self.ddate = ddate
+        self.dtime = dtime
+        self.cdate = cdate
+        self.ctime = ctime
 
-print(data)
+    def details(self):
+        """
+        Returns all the job details in a list
+        """
+        return [self.jname, int(self.ord_no), float(self.tsize), self.ddate,
+                self.dtime, self.cdate, self.ctime]
+
+
+example = Job('Test', '012344', '7.5', '10/03/23',
+              '08:00', '11/03/23', '02:00')
+
+print(example.details())
