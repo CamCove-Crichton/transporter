@@ -46,20 +46,26 @@ class Job:
                 self.dtime, self.cdate, self.ctime]
 
 
-# Idea from code insitute - love-sandwiches walkthrough project
+# Idea & code from code insitute - love-sandwiches walkthrough project
 def get_job_name():
     """
     A function to get the job name from the user
     """
-    print("Please enter a job name")
-    print("The job name must consist of three or more characters")
-    print("Example: Job Name 1\n")
+    while True:
+        print("Please enter a job name")
+        print("The job name must consist of three or more characters")
+        print("Example: Job Name 1\n")
 
-    job_str = input('Enter the job name here: \n')
-    validate_jname_input(job_str)
+        job_str = input('Enter the job name here: \n')
+
+        if validate_jname_input(job_str):
+            print("Job name is valid")
+            break
+
+    return job_str
 
 
-# Idea from code institute - love-sandwiches walkthrough project
+# Idea & code from code institute - love-sandwiches walkthrough project
 def validate_jname_input(string):
     """
     Inside the try, checks if there are three characters or more
@@ -72,6 +78,9 @@ def validate_jname_input(string):
             )
     except ValueError as e:
         print(f"Invaild entry: {e}, please try again\n")
+        return False
+
+    return True
 
 
-get_job_name()
+job_name = get_job_name()
