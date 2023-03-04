@@ -60,7 +60,7 @@ def get_job_name():
         job_str = input('Enter the job name here: \n')
 
         if validate_jname_input(job_str):
-            print("Job name is valid")
+            print("Job name is valid\n")
             break
 
     return job_str
@@ -84,6 +84,19 @@ def validate_jname_input(string):
     return True
 
 
+def get_ord_no():
+    """
+    A function to get the order number from the user
+    It will repeat the request for the user inout until the data is valid
+    """
+    print("Please enter an order number")
+    print("The order number should consist of 5 numbers")
+    print("Example: 12345\n")
+
+    ord_str = input('Enter the order number here\n')
+    print(f"The order number is ORD{int(ord_str)}")
+
+
 # Idea and code from code institute - love-sandwiches walkthrough project
 def update_transport_details(job_data):
     """
@@ -97,3 +110,4 @@ def update_transport_details(job_data):
 
 
 job_name = get_job_name()
+get_ord_no()
