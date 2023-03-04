@@ -56,7 +56,22 @@ def get_job_name():
     print("Example: Job Name 1\n")
 
     job_str = input('Enter the job name here: \n')
-    print(f"The job name provided is {job_str}")
+    validate_jname_input(job_str)
+
+
+# Idea from code institute - love-sandwiches walkthrough project
+def validate_jname_input(string):
+    """
+    Inside the try, checks if there are three characters or more
+    """
+    try:
+        if len(string) <= 3:
+            raise ValueError(
+                f"Job name must consist of 3 or more characters\n"
+                f"You entered {len(string)} character(s)"
+            )
+    except ValueError as e:
+        print(f"Invaild entry: {e}, please try again\n")
 
 
 get_job_name()
