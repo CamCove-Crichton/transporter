@@ -31,6 +31,8 @@ Transporter is a Python terminal program designed to take job input with regards
 - Added validation for the order number input to check that order number consists of 5 numbers and that the input is an integer. It will repeat the request for input until the input is valid
 - Created a main function to call all the functions that are required when the program is run
 - Added in a function for the user to input the size of truck that is required for the job
+- Created a function to validate the truck size user input on three validations, a value must be entered, it must be able to be converted to a float, and it must exist in a predefined list of truck sizes
+
 
 
 
