@@ -28,7 +28,8 @@ Transporter is a Python terminal program designed to take job input with regards
 - I then used a while loop to loop through my function for the job name to repeat the request for data until it has passed the validation tests to break the loop
 - Added in a function to update the google worksheet so when the user data has been collected, it will be updated in the google sheet
 - Added in a function for the user to input the order number data, and will then validate it
-- Added validation for the order number input to check that order number consists of 5 numbers and that the inout is an integer
+- Added validation for the order number input to check that order number consists of 5 numbers and that the input is an integer. It will repeat the request for input until the input is valid
+
 
 
 
