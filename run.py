@@ -88,7 +88,7 @@ def validate_jname_input(string):
 def get_ord_no():
     """
     A function to get the order number from the user
-    It will repeat the request for the user inout until the data is valid
+    It will repeat the request for the user input until the data is valid
     """
     while True:
         print("Please enter an order number")
@@ -126,6 +126,25 @@ def validate_ord_input(int_data):
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
+def get_truck_size():
+    """
+    A function to get the truck size for the job from the user
+    It will repeat the request for input until the input is valid
+    """
+    print("Please enter the truck size required for the job")
+    print("Truck size must be a number")
+    print("For 45ft Artic please enter 44 and for 30ft Artic enter 36")
+    print("Example: 7.5")
+
+    truck_str = input('Enter the truck size required here \n')
+    print(truck_str)
+
+    truck_sizes = [7.5, 10, 12, 15, 18, 26, 36, 44]
+    truck = [size for size in truck_sizes]
+    print(truck[0])
+
+
+# Idea and code from code institute - love-sandwiches walkthrough project
 def update_transport_details(job_data):
     """
     Updates the transport details google sheet
@@ -137,6 +156,9 @@ def update_transport_details(job_data):
     print("Job details added successfully!\n")
 
 
-job_name = get_job_name()
-ord_num = get_ord_no()
-print(ord_num)
+def main():
+    job_name = get_job_name()
+    ord_num = get_ord_no()
+
+
+get_truck_size()
