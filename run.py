@@ -134,14 +134,34 @@ def get_truck_size():
     print("Please enter the truck size required for the job")
     print("Truck size must be a number")
     print("For 45ft Artic please enter 44 and for 30ft Artic enter 36")
-    print("Example: 7.5")
+    print("Accepted Truck sizes: 7.5, 10, 12, 15, 18, 26, 36, 44")
 
     truck_str = input('Enter the truck size required here \n')
-    print(truck_str)
+    validate_truck_input(truck_str)
 
-    truck_sizes = [7.5, 10, 12, 15, 18, 26, 36, 44]
-    truck = [size for size in truck_sizes]
-    print(truck[0])
+
+def validate_truck_input(float_data):
+    """
+    Inside the try, checks the input is a number
+    """
+
+    try:
+        truck_sizes = ['7.5', '10', '12', '15', '18', '26', '36', '44']
+        if (float_data in truck_sizes):
+            print("Valid truck size")
+        else:
+            raise ValueError(
+                f"Truck size must be a size from the accepted list"
+                f"You entered '{float_data}'"
+            )
+        float(float_data)
+        if len(float_data) <= 0:
+            raise ValueError(
+                f"Truck size must be one of the sizes from the accepted list"
+                f"You entered '{float_data}'"
+            )
+    except ValueError as e:
+        print(f"Invalid entry: {e}, please try again\n")
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
