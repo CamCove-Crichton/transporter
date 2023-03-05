@@ -55,4 +55,7 @@ Transporter is a Python terminal program designed to take job input with regards
 ## Credits:
 
 [Code Institute](https://codeinstitute.net/)
+- Love Sandwiches walkthrough project
+- Python module content
+- Tutor support
 
