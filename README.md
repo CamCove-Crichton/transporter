@@ -28,7 +28,7 @@ Transporter is a Python terminal program designed to take job input with regards
 - I then used a while loop to loop through my function for the job name to repeat the request for data until it has passed the validation tests to break the loop
 - Added in a function to update the google worksheet so when the user data has been collected, it will be updated in the google sheet
 - Added in a function for the user to input the order number data, and will then validate it
-- Added validation for the order number input to check that order number consists of 5 numbers and that the input is an integer. It will repeat the request for input until the input is valid
+- Added validation for the order number input to check that order number consists of 5 numbers and that the input is an integer. It will repeat the request for input until the input is valid, as well as check the Transporter google sheet for existing order numbers, so each order number is unique
 - Created a main function to call all the functions that are required when the program is run
 - Added in a function for the user to input the size of truck that is required for the job
 - Created a function to validate the truck size user input on three validations, a value must be entered, it must be able to be converted to a float, and it must exist in a predefined list of truck sizes
