@@ -90,12 +90,18 @@ def get_ord_no():
     A function to get the order number from the user
     It will repeat the request for the user inout until the data is valid
     """
-    print("Please enter an order number")
-    print("The order number should consist of 5 numbers")
-    print("Example: 12345\n")
+    while True:
+        print("Please enter an order number")
+        print("The order number should consist of 5 numbers")
+        print("Example: 12345\n")
 
-    ord_str = input('Enter the order number here\n')
-    validate_ord_input(ord_str)
+        ord_str = input('Enter the order number here\n')
+
+        if validate_ord_input(ord_str):
+            print("Order no. is valid\n")
+            break
+
+    return ord_str
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
@@ -104,8 +110,8 @@ def validate_ord_input(int_data):
     Inside the try, checks if there are 5 numbers in the order number
     and checks that the input is an integer
     """
-    values_list = SHEET.worksheet("transport_details")
-    values = values_list.col_values(2)
+    # values_list = SHEET.worksheet("transport_details")
+    # values = values_list.col_values(2)
     try:
         int(int_data)
         if len(int_data) != 5:
@@ -113,7 +119,10 @@ def validate_ord_input(int_data):
                 f"Order no. must have 5 numbers, you entered {len(int_data)}"
             )
     except ValueError as e:
-        print(f"Invalid entry: {e}, please try again")
+        print(f"Invalid entry: {e}, please try again\n")
+        return False
+
+    return True
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
@@ -129,4 +138,5 @@ def update_transport_details(job_data):
 
 
 job_name = get_job_name()
-get_ord_no()
+ord_num = get_ord_no()
+print(ord_num)
