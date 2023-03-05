@@ -91,11 +91,11 @@ def get_ord_no():
     It will repeat the request for the user input until the data is valid
     """
     while True:
-        print("Please enter an order number")
-        print("The order number should consist of 5 numbers")
+        print("Please enter an order number.")
+        print("The order number should consist of 5 numbers.")
         print("Example: 12345\n")
 
-        ord_str = input('Enter the order number here\n')
+        ord_str = input('Enter the order number here: \n')
 
         if validate_ord_input(ord_str):
             print("Order no. is valid\n")
@@ -110,9 +110,13 @@ def validate_ord_input(int_data):
     Inside the try, checks if there are 5 numbers in the order number
     and checks that the input is an integer
     """
-    # values_list = SHEET.worksheet("transport_details")
-    # values = values_list.col_values(2)
     try:
+        values_list = SHEET.worksheet("transport_details")
+        values = values_list.col_values(2)
+        if (int_data in values):
+            raise ValueError(
+                f"ORD{int_data} already exists"
+            )
         int(int_data)
         if len(int_data) != 5:
             raise ValueError(
@@ -131,27 +135,35 @@ def get_truck_size():
     A function to get the truck size for the job from the user
     It will repeat the request for input until the input is valid
     """
-    print("Please enter the truck size required for the job")
-    print("Truck size must be a number")
-    print("For 45ft Artic please enter 44 and for 30ft Artic enter 36")
-    print("Accepted Truck sizes: 7.5, 10, 12, 15, 18, 26, 36, 44")
+    while True:
+        print("Please enter the truck size required for the job.")
+        print("Truck size must be a number.")
+        print("For 45ft Artic enter 44 and for 30ft Artic enter 36")
+        print("Accepted Truck sizes: 7.5, 10, 12, 15, 18, 26, 36, 44")
 
-    truck_str = input('Enter the truck size required here \n')
-    validate_truck_input(truck_str)
+        truck_str = input('Enter the truck size required here: \n')
+
+        if validate_truck_input(truck_str):
+            break
+
+    return truck_str
 
 
+# Idea and code from code institute - love-sandwiches walkthrough project
 def validate_truck_input(float_data):
     """
     Inside the try, checks the input is a number
+    It also checks the value can be converted to a float,
+    as well as checking it is a valid truck size from a list
+    of trucks
     """
-
     try:
         truck_sizes = ['7.5', '10', '12', '15', '18', '26', '36', '44']
         if (float_data in truck_sizes):
-            print("Valid truck size")
+            print("Truck size is valid\n")
         else:
             raise ValueError(
-                f"Truck size must be a size from the accepted list"
+                f"Truck size must be a size from the accepted list. "
                 f"You entered '{float_data}'"
             )
         float(float_data)
@@ -162,6 +174,9 @@ def validate_truck_input(float_data):
             )
     except ValueError as e:
         print(f"Invalid entry: {e}, please try again\n")
+        return False
+
+    return True
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
@@ -176,9 +191,12 @@ def update_transport_details(job_data):
     print("Job details added successfully!\n")
 
 
+# Idea and code from code institute - love-sandwiches walkthrough project
 def main():
     job_name = get_job_name()
     ord_num = get_ord_no()
+    truck_size = get_truck_size()
 
 
-get_truck_size()
+# Idea and code from code institute - love-sandwiches walkthrough project
+main()
