@@ -1,7 +1,7 @@
+import datetime
 import gspread  # from code institue love-sandwiches walkthrough
 # import Credentials class code from code institute love-sandwiches
 from google.oauth2.service_account import Credentials
-import datetime
 
 # SCOPE name and code for contastant from the code institute
 # love-sandwiches walkthrough
@@ -114,6 +114,7 @@ def validate_ord_input(int_data):
     try:
         values_list = SHEET.worksheet("transport_details")
         values = values_list.col_values(2)
+        # Below code idea from GeeksforGeeks website
         if (int_data in values):
             raise ValueError(
                 f"ORD{int_data} already exists"
@@ -160,6 +161,7 @@ def validate_truck_input(float_data):
     """
     try:
         truck_sizes = ['7.5', '10', '12', '15', '18', '26', '36', '44']
+        # Below code idea from GeeksforGeeks website
         if (float_data in truck_sizes):
             print("Truck size is valid\n")
         else:
@@ -191,10 +193,24 @@ def get_del_date():
     print("Example: 21-03-2023\n")
 
     del_date_str = input('Enter the delivery date here: \n')
-    print(del_date_str)
+    validate_date_input(del_date_str)
 
 
-# def validate_date_input(date_data):
+def validate_date_input(date_data):
+    """
+    Inside the try, checks for a valid date entry in the format
+    of DD-MM-YYYY
+    """
+    try:
+        if datetime.datetime.strptime(date_data, '%d-%m-%Y'):
+            print("Valid Date \n")
+        else:
+            raise ValueError(
+                f"The date {date_data} is incorrect"
+                f"It must be in a DD-MM-YYYY format"
+            )
+    except ValueError as e:
+        print(f"Invaild entry {e}, please try again. \n")
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
