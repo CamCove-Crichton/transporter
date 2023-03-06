@@ -32,6 +32,7 @@ Transporter is a Python terminal program designed to take job input with regards
 - Created a main function to call all the functions that are required when the program is run
 - Added in a function for the user to input the size of truck that is required for the job
 - Created a function to validate the truck size user input on three validations, a value must be entered, it must be able to be converted to a float, and it must exist in a predefined list of truck sizes
+- Added in a function for the user to input a delivery date required for the job
 
 
 
@@ -59,3 +60,5 @@ Transporter is a Python terminal program designed to take job input with regards
 - Python module content
 - Tutor support
 
+[GeeksforGeeks](https://www.geeksforgeeks.org/check-if-element-exists-in-list-in-python/)
+- Reminder on how to search for a value in a list of values
