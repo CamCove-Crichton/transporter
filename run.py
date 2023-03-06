@@ -1,6 +1,7 @@
 import gspread  # from code institue love-sandwiches walkthrough
 # import Credentials class code from code institute love-sandwiches
 from google.oauth2.service_account import Credentials
+import datetime
 
 # SCOPE name and code for contastant from the code institute
 # love-sandwiches walkthrough
@@ -180,6 +181,23 @@ def validate_truck_input(float_data):
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
+def get_del_date():
+    """
+    A function for the user to input the required delivery date
+    It will repeat the request for data until it is valid
+    """
+    print("Please enter the delivery date.")
+    print("It must be in DD-MM-YYYY format.")
+    print("Example: 21-03-2023\n")
+
+    del_date_str = input('Enter the delivery date here: \n')
+    print(del_date_str)
+
+
+# def validate_date_input(date_data):
+
+
+# Idea and code from code institute - love-sandwiches walkthrough project
 def update_transport_details(job_data):
     """
     Updates the transport details google sheet
@@ -199,4 +217,6 @@ def main():
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
-main()
+# main()
+
+get_del_date()
