@@ -201,6 +201,25 @@ def get_del_date():
     return del_date_str
 
 
+def get_col_date():
+    """
+    A function to for the user to input the required collection date
+    for the job
+    It will repeat the request for data until it is valid
+    """
+    while True:
+        print("Please enter the collection date.")
+        print("It must be in DD-MM-YYYY format")
+        print("Example: 21-03-2023\n")
+
+        col_date_str = input('Enter the collection date here: \n')
+
+        if validate_date_input(col_date_str):
+            break
+
+    return col_date_str
+
+
 def validate_date_input(date_data):
     """
     Inside the try, checks for a valid date entry in the format
@@ -239,6 +258,7 @@ def main():
     ord_num = get_ord_no()
     truck_size = get_truck_size()
     del_date = get_del_date()
+    col_date = get_col_date()
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
