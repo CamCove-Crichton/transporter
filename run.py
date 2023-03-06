@@ -188,12 +188,17 @@ def get_del_date():
     A function for the user to input the required delivery date
     It will repeat the request for data until it is valid
     """
-    print("Please enter the delivery date.")
-    print("It must be in DD-MM-YYYY format.")
-    print("Example: 21-03-2023\n")
+    while True:
+        print("Please enter the delivery date.")
+        print("It must be in DD-MM-YYYY format.")
+        print("Example: 21-03-2023\n")
 
-    del_date_str = input('Enter the delivery date here: \n')
-    validate_date_input(del_date_str)
+        del_date_str = input('Enter the delivery date here: \n')
+
+        if validate_date_input(del_date_str):
+            break
+
+    return del_date_str
 
 
 def validate_date_input(date_data):
@@ -203,7 +208,7 @@ def validate_date_input(date_data):
     """
     try:
         if datetime.datetime.strptime(date_data, '%d-%m-%Y'):
-            print("Valid Date \n")
+            print("Date is valid \n")
         else:
             raise ValueError(
                 f"The date {date_data} is incorrect"
@@ -211,6 +216,9 @@ def validate_date_input(date_data):
             )
     except ValueError as e:
         print(f"Invaild entry {e}, please try again. \n")
+        return False
+
+    return True
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
@@ -230,9 +238,8 @@ def main():
     job_name = get_job_name()
     ord_num = get_ord_no()
     truck_size = get_truck_size()
+    del_date = get_del_date()
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
-# main()
-
-get_del_date()
+main()
