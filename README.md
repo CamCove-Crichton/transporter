@@ -34,6 +34,7 @@ Transporter is a Python terminal program designed to take job input with regards
 - Created a function to validate the truck size user input on three validations, a value must be entered, it must be able to be converted to a float, and it must exist in a predefined list of truck sizes
 - Added in a function for the user to input a delivery date required for the job, and it will repeat the request for the data until the date entered is a valid date to the format it requires
 - Created a fuction to validate date input from the user in a format of DD-MM-YYYY
+- Added in a function for the user to input a collection date for the job, and it will repeat the request until the input is valid. It utilises the same date validation function as the delivery date validation
 
 
 
