@@ -33,6 +33,8 @@ Transporter is a Python terminal program designed to take job input with regards
 - Added in a function for the user to input the size of truck that is required for the job
 - Created a function to validate the truck size user input on three validations, a value must be entered, it must be able to be converted to a float, and it must exist in a predefined list of truck sizes
 - Added in a function for the user to input a delivery date required for the job
+- Created a fuction to validate date input from the user
+
 
 
 
@@ -62,3 +64,9 @@ Transporter is a Python terminal program designed to take job input with regards
 
 [GeeksforGeeks](https://www.geeksforgeeks.org/check-if-element-exists-in-list-in-python/)
 - Reminder on how to search for a value in a list of values
+
+[C#Corner](https://www.c-sharpcorner.com/UploadFile/75a48f/working-with-date-and-time-python/)
+- Read up on how to format the date input in a particular way
+
+[Stack Overflow](https://stackoverflow.com/questions/16870663/how-do-i-validate-a-date-string-format-in-python)
+- Assistance with how to validate a date input
