@@ -35,9 +35,9 @@ Transporter is a Python terminal program designed to take job input with regards
 - Added in a function for the user to input a delivery date required for the job, and it will repeat the request for the data until the date entered is a valid date to the format it requires
 - Created a fuction to validate date input from the user in a format of DD-MM-YYYY
 - Added in a function for the user to input a collection date for the job, and it will repeat the request until the input is valid. It utilises the same date validation function as the delivery date validation
-- Added in a function for the user to input a required delivery date for the job
+- Added in a function for the user to input a required delivery time for the job, it will repeat the request for the data until the input from the user is valid
 - I then added in a validation function to validate the time inputs from the user
-
+- Added in a function for the user to input a collection time and utilise the same time validation function to validate the input. It will also repeat the request for the user to input the time until the data is valid
 
 
 

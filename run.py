@@ -246,6 +246,7 @@ def get_del_time():
     """
     A function for the user to input the delivery time required
     for the truck to be on site
+    It will repeat the request for data until the data is valid
     """
     while True:
         print("Please enter the required delivery time.")
@@ -261,10 +262,12 @@ def get_del_time():
     return del_time_str
 
 
+# Idea and code from code institute - love-sandwiches walkthrough project
 def get_col_time():
     """
     A function for the user to input the collection time required
     for the truck to be on site
+    It will repeat the request for data until the data is valid
     """
     while True:
         print("Please enter the required collection time.")
