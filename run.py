@@ -250,9 +250,27 @@ def get_del_time():
     print("Please enter the required delivery time.")
     print("It must be in a 24 hour format, HH:MM.")
     print("Example: 18:00\n")
+    print("Remember 12:00 is accepted as midday, and 00:00 as midnight!\n")
 
     del_time_str = input('Enter the delivery time here: \n')
-    print(del_time_str)
+    validate_time(del_time_str)
+
+
+def validate_time(time_data):
+    """
+    Inside the try, checks for a valid time entry in a 24 hour format
+    HH:MM
+    """
+    try:
+        if datetime.datetime.strptime(time_data, '%H:%M'):
+            print("Time is valid \n")
+        else:
+            raise ValueError(
+                f"The {time_data} is incorrect"
+                f"It must be in a 24 hour, HH:MM format."
+            )
+    except ValueError as e:
+        print(f"Invalid entry {e}, please try again. \n")
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
