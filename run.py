@@ -324,6 +324,10 @@ def main():
     del_time = get_del_time()
     col_date = get_col_date()
     col_time = get_col_time()
+    job_inputs = Job(job_name, ord_num, truck_size, del_date, del_time,
+                     col_date, col_time)
+    print(job_inputs.details())
+    update_transport_details(job_inputs.details())
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
