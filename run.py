@@ -247,13 +247,37 @@ def get_del_time():
     A function for the user to input the delivery time required
     for the truck to be on site
     """
-    print("Please enter the required delivery time.")
-    print("It must be in a 24 hour format, HH:MM.")
-    print("Example: 18:00\n")
-    print("Remember 12:00 is accepted as midday, and 00:00 as midnight!\n")
+    while True:
+        print("Please enter the required delivery time.")
+        print("It must be in a 24 hour format, HH:MM.")
+        print("Example: 18:00\n")
+        print("Remember 12:00 is accepted as midday, and 00:00 as midnight!\n")
 
-    del_time_str = input('Enter the delivery time here: \n')
-    validate_time(del_time_str)
+        del_time_str = input('Enter the delivery time here: \n')
+
+        if validate_time(del_time_str):
+            break
+
+    return del_time_str
+
+
+def get_col_time():
+    """
+    A function for the user to input the collection time required
+    for the truck to be on site
+    """
+    while True:
+        print("Please enter the required collection time.")
+        print("It must be in a 24 hour format, HH:MM.")
+        print("Example: 18:00\n")
+        print("Remember 12:00 is accepted as midday, and 00:00 as midnight!\n")
+
+        col_time_str = input('Enter the collection time here: \n')
+
+        if validate_time(col_time_str):
+            break
+
+    return col_time_str
 
 
 def validate_time(time_data):
@@ -271,6 +295,9 @@ def validate_time(time_data):
             )
     except ValueError as e:
         print(f"Invalid entry {e}, please try again. \n")
+        return False
+
+    return True
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
@@ -291,9 +318,10 @@ def main():
     ord_num = get_ord_no()
     truck_size = get_truck_size()
     del_date = get_del_date()
+    del_time = get_del_time()
     col_date = get_col_date()
+    col_time = get_col_time()
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
-# main()
-get_del_time()
+main()
