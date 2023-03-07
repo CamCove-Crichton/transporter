@@ -36,6 +36,7 @@ Transporter is a Python terminal program designed to take job input with regards
 - Created a fuction to validate date input from the user in a format of DD-MM-YYYY
 - Added in a function for the user to input a collection date for the job, and it will repeat the request until the input is valid. It utilises the same date validation function as the delivery date validation
 - Added in a function for the user to input a required delivery date for the job
+- I then added in a validation function to validate the time inputs from the user
 
 
 
@@ -72,3 +73,4 @@ Transporter is a Python terminal program designed to take job input with regards
 
 [Stack Overflow](https://stackoverflow.com/questions/16870663/how-do-i-validate-a-date-string-format-in-python)
 - Assistance with how to validate a date input
+- Assistance with how to validate a time input
