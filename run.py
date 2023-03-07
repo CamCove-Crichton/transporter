@@ -220,6 +220,7 @@ def get_col_date():
     return col_date_str
 
 
+# Idea and code from code institute - love-sandwiches walkthrough project
 def validate_date_input(date_data):
     """
     Inside the try, checks for a valid date entry in the format
@@ -238,6 +239,20 @@ def validate_date_input(date_data):
         return False
 
     return True
+
+
+# Idea and code from code institute - love-sandwiches walkthrough project
+def get_del_time():
+    """
+    A function for the user to input the delivery time required
+    for the truck to be on site
+    """
+    print("Please enter the required delivery time.")
+    print("It must be in a 24 hour format, HH:MM.")
+    print("Example: 18:00\n")
+
+    del_time_str = input('Enter the delivery time here: \n')
+    print(del_time_str)
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
@@ -262,4 +277,5 @@ def main():
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
-main()
+# main()
+get_del_time()
