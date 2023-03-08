@@ -283,6 +283,7 @@ def get_col_time():
     return col_time_str
 
 
+# Idea and code from code institute - love-sandwiches walkthrough project
 def validate_time(time_data):
     """
     Inside the try, checks for a valid time entry in a 24 hour format
@@ -301,6 +302,21 @@ def validate_time(time_data):
         return False
 
     return True
+
+
+def calc_load_date(job_data):
+    """
+    A function to calculate the loading date,
+    using the data from the user
+    """
+    dateformat = '%d-%m-%Y'
+
+    if job_data.tsize == '7.5':
+        if job_data.dtime <= '09:00':
+            load_date = datetime.datetime.strptime(
+                job_data.ddate, dateformat)-datetime.timedelta(days=1)
+            load_date = load_date.strftime(dateformat)
+        print(load_date)
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
@@ -327,6 +343,7 @@ def main():
     job_inputs = Job(job_name, ord_num, truck_size, del_date, del_time,
                      col_date, col_time)
     print(job_inputs.details())
+    calc_load_date(job_inputs)
     update_transport_details(job_inputs.details())
 
 
