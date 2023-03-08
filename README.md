@@ -39,6 +39,7 @@ Transporter is a Python terminal program designed to take job input with regards
 - I then added in a validation function to validate the time inputs from the user
 - Added in a function for the user to input a collection time and utilise the same time validation function to validate the input. It will also repeat the request for the user to input the time until the data is valid
 - Once receiving all the data, I assigned all the user inputs to their own variables and then called them in the Jobs class, and tested it is pushing the data through to the google sheet
+- I then moved onto adding in a function to calculate the loading date using the inputs from the user
 
 
 
@@ -75,3 +76,6 @@ Transporter is a Python terminal program designed to take job input with regards
 [Stack Overflow](https://stackoverflow.com/questions/16870663/how-do-i-validate-a-date-string-format-in-python)
 - Assistance with how to validate a date input
 - Assistance with how to validate a time input
+
+[tutorialspoint](https://www.tutorialspoint.com/How-to-perform-arithmetic-operations-on-a-date-in-Python)
+- Information on how to use arithmitic on dates and times

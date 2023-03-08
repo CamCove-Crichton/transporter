@@ -220,6 +220,7 @@ def get_col_date():
     return col_date_str
 
 
+# Assistance from stackoverflow & C-Sharp Corner for validation
 # Idea and code from code institute - love-sandwiches walkthrough project
 def validate_date_input(date_data):
     """
@@ -283,6 +284,7 @@ def get_col_time():
     return col_time_str
 
 
+# Assistance from stackoverflow & C-Sharp Corner for validation
 # Idea and code from code institute - love-sandwiches walkthrough project
 def validate_time(time_data):
     """
@@ -304,6 +306,7 @@ def validate_time(time_data):
     return True
 
 
+# Assistance from tutorialspoint for calculating dates and times
 def calc_load_date(job_data):
     """
     A function to calculate the loading date,
