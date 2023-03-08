@@ -319,6 +319,8 @@ def calc_load_date(job_data):
             load_date = datetime.datetime.strptime(
                 job_data.ddate, dateformat)-datetime.timedelta(days=1)
             load_date = load_date.strftime(dateformat)
+        else:
+            load_date = job_data.ddate
         print(load_date)
 
 
