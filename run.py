@@ -315,7 +315,7 @@ def calc_load_date(job_data):
     """
     dateformat = '%d-%m-%Y'
 
-    if job_data.tsize == '7.5':
+    if float(job_data.tsize) <= 15:
         if job_data.dtime <= '09:00':
             load_date = datetime.datetime.strptime(
                 job_data.ddate, dateformat)-datetime.timedelta(days=1)
@@ -323,8 +323,16 @@ def calc_load_date(job_data):
         else:
             load_date = job_data.ddate
         return load_date
-    elif job_data.tsize >= '10':
-        if job_data.dtime <= '09:30':
+    elif float(job_data.tsize) <= 26:
+        if job_data.dtime <= '11:00':
+            load_date = datetime.datetime.strptime(
+                job_data.ddate, dateformat)-datetime.timedelta(days=1)
+            load_date = load_date.strftime(dateformat)
+        else:
+            load_date = job_data.ddate
+        return load_date
+    elif float(job_data.tsize) >= 36:
+        if job_data.dtime <= '12:00':
             load_date = datetime.datetime.strptime(
                 job_data.ddate, dateformat)-datetime.timedelta(days=1)
             load_date = load_date.strftime(dateformat)
