@@ -25,11 +25,12 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Transporter')
 
 
-class Job:
+class JobInputs:
     """
     Job class to hold all user input job related
     """
-    def __init__(self, jname, ord_no, tsize, ddate, dtime, cdate, ctime):
+    def __init__(
+                 self, jname, ord_no, tsize, ddate, dtime, cdate, ctime):
         # properties
         self.jname = jname
         self.ord_no = ord_no
@@ -321,7 +322,15 @@ def calc_load_date(job_data):
             load_date = load_date.strftime(dateformat)
         else:
             load_date = job_data.ddate
-        print(load_date)
+        return load_date
+    elif job_data.tsize >= '10':
+        if job_data.dtime <= '09:30':
+            load_date = datetime.datetime.strptime(
+                job_data.ddate, dateformat)-datetime.timedelta(days=1)
+            load_date = load_date.strftime(dateformat)
+        else:
+            load_date = job_data.ddate
+        return load_date
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
@@ -345,10 +354,11 @@ def main():
     del_time = get_del_time()
     col_date = get_col_date()
     col_time = get_col_time()
-    job_inputs = Job(job_name, ord_num, truck_size, del_date, del_time,
-                     col_date, col_time)
+    job_inputs = JobInputs(job_name, ord_num, truck_size, del_date, del_time,
+                           col_date, col_time)
     print(job_inputs.details())
-    calc_load_date(job_inputs)
+    loading_date = calc_load_date(job_inputs)
+    print(loading_date)
     update_transport_details(job_inputs.details())
 
 
