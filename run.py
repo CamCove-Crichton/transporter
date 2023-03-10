@@ -314,15 +314,20 @@ def calc_load_date(job_data):
     using the data from the user
     """
     dateformat = '%d-%m-%Y'
+    timeformat = '%H:%M'
+    delivery_time = datetime.datetime.strptime(job_data.dtime, timeformat)
 
     if float(job_data.tsize) <= 15:
         if job_data.dtime <= '09:00':
             load_date = datetime.datetime.strptime(
                 job_data.ddate, dateformat)-datetime.timedelta(days=1)
             load_date = load_date.strftime(dateformat)
+            load_time = delivery_time - datetime.timedelta(hours=17)
+            load_time = load_time.strftime(timeformat)
         else:
             load_date = job_data.ddate
-        return load_date
+            # load_time = job_data.dtime - datetime.timedelta(hours=3)
+        return (load_date, load_time)
     elif float(job_data.tsize) <= 26:
         if job_data.dtime <= '11:00':
             load_date = datetime.datetime.strptime(
@@ -375,6 +380,19 @@ def calc_unload_date(job_data):
         return unload_date
 
 
+# def calc_load_time(job_data):
+#     """
+#     A function to calculate the loading time,
+#     using the data inputs from the user
+#     """
+#     timeformat = '%H:%M'
+
+#     delivery_time = datetime.datetime.strptime(job_data.dtime, timeformat)
+#     load_time = delivery_time - datetime.timedelta(hours=17)
+#     load_time = load_time.strftime(timeformat)
+#     print(load_time)
+
+
 # Idea and code from code institute - love-sandwiches walkthrough project
 def update_transport_details(job_data):
     """
@@ -403,6 +421,7 @@ def main():
     print(loading_date)
     unloading_date = calc_unload_date(job_inputs)
     print(unloading_date)
+    # calc_load_time(job_inputs)
     update_transport_details(job_inputs.details())
 
 
