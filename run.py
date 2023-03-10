@@ -419,8 +419,9 @@ def main():
     job_inputs = JobInputs(job_name, ord_num, truck_size, del_date, del_time,
                            col_date, col_time)
     print(job_inputs.details())
-    loading_date = calc_load_date(job_inputs)
+    loading_date, loading_time = calc_load_date(job_inputs)
     print(loading_date)
+    print(loading_time)
     unloading_date = calc_unload_date(job_inputs)
     print(unloading_date)
     # calc_load_time(job_inputs)
