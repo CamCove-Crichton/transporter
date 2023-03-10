@@ -357,6 +357,22 @@ def calc_unload_date(job_data):
         else:
             unload_date = job_data.cdate
         return unload_date
+    elif float(job_data.tsize) <= 26:
+        if job_data.ctime >= '13:00':
+            unload_date = datetime.datetime.strptime(
+                job_data.cdate, dateformat)+datetime.timedelta(days=1)
+            unload_date = unload_date.strftime(dateformat)
+        else:
+            unload_date = job_data.cdate
+        return unload_date
+    elif float(job_data.tsize) >= 36:
+        if job_data.ctime >= '11:30':
+            unload_date = datetime.datetime.strptime(
+                job_data.cdate, dateformat)+datetime.timedelta(days=1)
+            unload_date = unload_date.strftime(dateformat)
+        else:
+            unload_date = job_data.cdate
+        return unload_date
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
