@@ -326,7 +326,9 @@ def calc_load_date(job_data):
             load_time = load_time.strftime(timeformat)
         else:
             load_date = job_data.ddate
-            # load_time = job_data.dtime - datetime.timedelta(hours=3)
+            load_time = datetime.datetime.strptime(
+                job_data.dtime, timeformat)-datetime.timedelta(hours=3)
+            load_time = load_time.strftime(timeformat)
         return (load_date, load_time)
     elif float(job_data.tsize) <= 26:
         if job_data.dtime <= '11:00':
