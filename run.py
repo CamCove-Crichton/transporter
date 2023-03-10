@@ -335,17 +335,29 @@ def calc_load_date(job_data):
             load_date = datetime.datetime.strptime(
                 job_data.ddate, dateformat)-datetime.timedelta(days=1)
             load_date = load_date.strftime(dateformat)
+            load_time = delivery_time - datetime.timedelta(hours=20,
+                                                           minutes=30)
+            load_time = load_time.strftime(timeformat)
         else:
             load_date = job_data.ddate
-        return load_date
+            load_time = datetime.datetime.strptime(
+                job_data.dtime, timeformat)-datetime.timedelta(hours=4,
+                                                               minutes=30)
+            load_time = load_time.strftime(timeformat)
+        return (load_date, load_time)
     elif float(job_data.tsize) >= 36:
         if job_data.dtime <= '12:00':
             load_date = datetime.datetime.strptime(
                 job_data.ddate, dateformat)-datetime.timedelta(days=1)
             load_date = load_date.strftime(dateformat)
+            load_time = delivery_time - datetime.timedelta(hours=22)
+            load_time = load_time.strftime(timeformat)
         else:
             load_date = job_data.ddate
-        return load_date
+            load_time = datetime.datetime.strptime(
+                job_data.dtime, timeformat)-datetime.timedelta(hours=5)
+            load_time = load_time.strftime(timeformat)
+        return (load_date, load_time)
 
 
 # Assistance from tutorialspoint for calculating dates and times
@@ -420,8 +432,8 @@ def main():
                            col_date, col_time)
     print(job_inputs.details())
     loading_date, loading_time = calc_load_date(job_inputs)
-    print(loading_date)
-    print(loading_time)
+    print(f"\nLoading date calculated: {loading_date}")
+    print(f"Loading time calculated: {loading_time}\n")
     unloading_date = calc_unload_date(job_inputs)
     print(unloading_date)
     # calc_load_time(job_inputs)
