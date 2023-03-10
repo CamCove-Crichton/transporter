@@ -40,6 +40,7 @@ Transporter is a Python terminal program designed to take job input with regards
 - Added in a function for the user to input a collection time and utilise the same time validation function to validate the input. It will also repeat the request for the user to input the time until the data is valid
 - Once receiving all the data, I assigned all the user inputs to their own variables and then called them in the Jobs class, and tested it is pushing the data through to the google sheet
 - I then moved onto adding in a function to calculate the loading date using the inputs from the user, using if elif statements and nested if statements to check for the truck size to determine the date the truck should load on
+- Using a similar approach as the calculating load date function, I added a function to calculate the unloading date
 
 
 
