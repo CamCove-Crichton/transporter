@@ -341,6 +341,24 @@ def calc_load_date(job_data):
         return load_date
 
 
+# Assistance from tutorialspoint for calculating dates and times
+def calc_unload_date(job_data):
+    """
+    A function to calculate the unloading date for the job,
+    using the data from the user inputs
+    """
+    dateformat = '%d-%m-%Y'
+
+    if float(job_data.tsize) <= 15:
+        if job_data.ctime >= '15:00':
+            unload_date = datetime.datetime.strptime(
+                job_data.cdate, dateformat)+datetime.timedelta(days=1)
+            unload_date = unload_date.strftime(dateformat)
+        else:
+            unload_date = job_data.cdate
+        return unload_date
+
+
 # Idea and code from code institute - love-sandwiches walkthrough project
 def update_transport_details(job_data):
     """
@@ -367,6 +385,8 @@ def main():
     print(job_inputs.details())
     loading_date = calc_load_date(job_inputs)
     print(loading_date)
+    unloading_date = calc_unload_date(job_inputs)
+    print(unloading_date)
     update_transport_details(job_inputs.details())
 
 
