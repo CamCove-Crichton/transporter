@@ -369,13 +369,20 @@ def calc_unload_date(job_data):
     dateformat = '%d-%m-%Y'
     timeformat = '%H:%M'
     collection_time = datetime.datetime.strptime(job_data.ctime, timeformat)
+    start_time = datetime.datetime.strptime('08:00', timeformat)
+    time_diff = start_time - collection_time
+    print(f"Time difference: {time_diff}")
 
     if float(job_data.tsize) <= 15:
         if job_data.ctime >= '15:00':
             unload_date = datetime.datetime.strptime(
                 job_data.cdate, dateformat)+datetime.timedelta(days=1)
             unload_date = unload_date.strftime(dateformat)
-            unload_time = collection_time + datetime.timedelta(hours=17)
+            unload_time = collection_time + time_diff
+            unload_time = unload_time.strftime(timeformat)
+        elif job_data.ctime < '05:00':
+            unload_date = job_data.cdate
+            unload_time = collection_time + time_diff
             unload_time = unload_time.strftime(timeformat)
         else:
             unload_date = job_data.cdate
@@ -388,17 +395,28 @@ def calc_unload_date(job_data):
             unload_date = datetime.datetime.strptime(
                 job_data.cdate, dateformat)+datetime.timedelta(days=1)
             unload_date = unload_date.strftime(dateformat)
+            unload_time = collection_time + datetime.timedelta(hours=19)
+            unload_time = unload_time.strftime(timeformat)
         else:
             unload_date = job_data.cdate
-        return unload_date
+            unload_time = datetime.datetime.strptime(
+                job_data.ctime, timeformat) + datetime.timedelta(hours=4)
+            unload_time = unload_time.strftime(timeformat)
+        return (unload_date, unload_time)
     elif float(job_data.tsize) >= 36:
         if job_data.ctime >= '11:30':
             unload_date = datetime.datetime.strptime(
                 job_data.cdate, dateformat)+datetime.timedelta(days=1)
             unload_date = unload_date.strftime(dateformat)
+            unload_time = collection_time + datetime.timedelta(hours=21)
+            unload_time = unload_time.strftime(timeformat)
         else:
             unload_date = job_data.cdate
-        return unload_date
+            unload_time = datetime.datetime.strptime(
+                job_data.ctime, timeformat) + datetime.timedelta(hours=4,
+                                                                 minutes=30)
+            unload_time = unload_time.strftime(timeformat)
+        return (unload_date, unload_time)
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
@@ -428,8 +446,9 @@ def main():
     loading_date, loading_time = calc_load_date(job_inputs)
     print(f"\nLoading date calculated: {loading_date}")
     print(f"Loading time calculated: {loading_time}\n")
-    unloading_date = calc_unload_date(job_inputs)
-    print(unloading_date)
+    unloading_date, unloading_time = calc_unload_date(job_inputs)
+    print(f"Unloading date calculated: {unloading_date}")
+    print(f"Unloading time calculated: {unloading_time}")
     # calc_load_time(job_inputs)
     update_transport_details(job_inputs.details())
 
