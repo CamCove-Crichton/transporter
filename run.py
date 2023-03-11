@@ -313,12 +313,15 @@ def calc_load_date(job_data):
     A function to calculate the loading date,
     using the data from the user
     """
+
+    print("\nCalculating loading details...\n")
+
     dateformat = '%d-%m-%Y'
     timeformat = '%H:%M'
     delivery_time = datetime.datetime.strptime(job_data.dtime, timeformat)
 
     if float(job_data.tsize) <= 15:
-        if job_data.dtime <= '09:00':
+        if job_data.dtime <= '10:00':
             load_date = datetime.datetime.strptime(
                 job_data.ddate, dateformat)-datetime.timedelta(days=1)
             load_date = load_date.strftime(dateformat)
@@ -366,12 +369,14 @@ def calc_unload_date(job_data):
     A function to calculate the unloading date for the job,
     using the data from the user inputs
     """
+
+    print("Calculating unloading details...\n")
+
     dateformat = '%d-%m-%Y'
     timeformat = '%H:%M'
     collection_time = datetime.datetime.strptime(job_data.ctime, timeformat)
     start_time = datetime.datetime.strptime('08:00', timeformat)
     time_diff = start_time - collection_time
-    print(f"Time difference: {time_diff}")
 
     if float(job_data.tsize) <= 15:
         if job_data.ctime >= '15:00':
@@ -395,7 +400,11 @@ def calc_unload_date(job_data):
             unload_date = datetime.datetime.strptime(
                 job_data.cdate, dateformat)+datetime.timedelta(days=1)
             unload_date = unload_date.strftime(dateformat)
-            unload_time = collection_time + datetime.timedelta(hours=19)
+            unload_time = collection_time + time_diff
+            unload_time = unload_time.strftime(timeformat)
+        elif job_data.ctime < '04:00':
+            unload_date = job_data.cdate
+            unload_time = collection_time + time_diff
             unload_time = unload_time.strftime(timeformat)
         else:
             unload_date = job_data.cdate
@@ -408,7 +417,11 @@ def calc_unload_date(job_data):
             unload_date = datetime.datetime.strptime(
                 job_data.cdate, dateformat)+datetime.timedelta(days=1)
             unload_date = unload_date.strftime(dateformat)
-            unload_time = collection_time + datetime.timedelta(hours=21)
+            unload_time = collection_time + time_diff
+            unload_time = unload_time.strftime(timeformat)
+        elif job_data.ctime < '03:30':
+            unload_date = job_data.cdate
+            unload_time = collection_time + time_diff
             unload_time = unload_time.strftime(timeformat)
         else:
             unload_date = job_data.cdate
