@@ -367,15 +367,22 @@ def calc_unload_date(job_data):
     using the data from the user inputs
     """
     dateformat = '%d-%m-%Y'
+    timeformat = '%H:%M'
+    collection_time = datetime.datetime.strptime(job_data.ctime, timeformat)
 
     if float(job_data.tsize) <= 15:
         if job_data.ctime >= '15:00':
             unload_date = datetime.datetime.strptime(
                 job_data.cdate, dateformat)+datetime.timedelta(days=1)
             unload_date = unload_date.strftime(dateformat)
+            unload_time = collection_time + datetime.timedelta(hours=17)
+            unload_time = unload_time.strftime(timeformat)
         else:
             unload_date = job_data.cdate
-        return unload_date
+            unload_time = datetime.datetime.strptime(
+                job_data.ctime, timeformat) + datetime.timedelta(hours=3)
+            unload_time = unload_time.strftime(timeformat)
+        return (unload_date, unload_time)
     elif float(job_data.tsize) <= 26:
         if job_data.ctime >= '13:00':
             unload_date = datetime.datetime.strptime(
@@ -392,19 +399,6 @@ def calc_unload_date(job_data):
         else:
             unload_date = job_data.cdate
         return unload_date
-
-
-# def calc_load_time(job_data):
-#     """
-#     A function to calculate the loading time,
-#     using the data inputs from the user
-#     """
-#     timeformat = '%H:%M'
-
-#     delivery_time = datetime.datetime.strptime(job_data.dtime, timeformat)
-#     load_time = delivery_time - datetime.timedelta(hours=17)
-#     load_time = load_time.strftime(timeformat)
-#     print(load_time)
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
