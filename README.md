@@ -42,6 +42,7 @@ Transporter is a Python terminal program designed to take job input with regards
 - I then moved onto adding in a function to calculate the loading date using the inputs from the user, using if elif statements and nested if statements to check for the truck size to determine the date the truck should load on
 - Using a similar approach as the calculating load date function, I added a function to calculate the unloading date
 - I then began working on the logic for calculating the loading time, and worked it into the same function as the calculating load date, to return a tuple, and then in the main function created two variable to unpack the returned values to utilise later
+- Afterwards, I then added in a similar calculation to the function for calculating the unloading date, so it works out the date and the time
 
 
 
@@ -81,3 +82,6 @@ Transporter is a Python terminal program designed to take job input with regards
 
 [tutorialspoint](https://www.tutorialspoint.com/How-to-perform-arithmetic-operations-on-a-date-in-Python)
 - Information on how to use arithmitic on dates and times
+
+[W3Schools](https://www.w3schools.com/python/python_tuples_unpack.asp)
+- Refresher on unpacking tuples
