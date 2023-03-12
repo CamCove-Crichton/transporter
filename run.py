@@ -59,6 +59,29 @@ Collection Time: {self.ctime}"
         return job_description
 
 
+class FullJobDetails(JobInputs):
+    """
+    A subclass to hold all the job details including the loading
+    and unloading details
+    """
+    def __init__(self, jname, ord_no, tsize, ddate, dtime, cdate, ctime,
+                 ldate, ltime, unl_date, unl_time):
+        #  properties
+        super().__init__(jname, ord_no, tsize, ddate, dtime, cdate, ctime)
+        self.ldate = ldate
+        self.ltime = ltime
+        self.unl_date = unl_date
+        self.unl_time = unl_time
+
+    def details(self):
+        """
+        Returns all the job details in a list
+        """
+        return [self.jname, int(self.ord_no), float(self.tsize), self.ddate,
+                self.dtime, self.cdate, self.ctime, self.ldate, self.ltime,
+                self.unl_date, self.unl_time]
+
+
 # Idea & code from code insitute - love-sandwiches walkthrough project
 def get_job_name():
     """
@@ -448,6 +471,7 @@ def calc_unload_date(job_data):
                 job_data.ctime, timeformat) + datetime.timedelta(hours=4)
             unload_time = unload_time.strftime(timeformat)
         return (unload_date, unload_time)
+
     elif float(job_data.tsize) >= 36:
         if job_data.ctime >= '11:30':
             unload_date = datetime.datetime.strptime(
@@ -497,9 +521,12 @@ def main():
     print(f"Loading time calculated: {loading_time}\n")
     unloading_date, unloading_time = calc_unload_date(job_inputs)
     print(f"Unloading date calculated: {unloading_date}")
-    print(f"Unloading time calculated: {unloading_time}")
-    # calc_load_time(job_inputs)
-    update_transport_details(job_inputs.details())
+    print(f"Unloading time calculated: {unloading_time}\n")
+    full_job_details = FullJobDetails(job_name, ord_num, truck_size, del_date,
+                                      del_time, col_date, col_time,
+                                      loading_date, loading_time,
+                                      unloading_date, unloading_time)
+    update_transport_details(full_job_details.details())
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
