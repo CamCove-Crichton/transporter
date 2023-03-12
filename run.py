@@ -333,8 +333,8 @@ def calc_load_date(job_data):
     timeformat = '%H:%M'
     delivery_time = datetime.datetime.strptime(job_data.dtime, timeformat)
     small_load_time = datetime.datetime.strptime('16:00', timeformat)
-    medium_load_time = '15:00'
-    large_load_time = '14:00'
+    medium_load_time = datetime.datetime.strptime('15:00', timeformat)
+    large_load_time = datetime.datetime.strptime('14:00', timeformat)
 
     if float(job_data.tsize) <= 15:
         if job_data.dtime <= '10:00':
@@ -355,13 +355,19 @@ def calc_load_date(job_data):
                 job_data.dtime, timeformat)-datetime.timedelta(hours=3)
             load_time = load_time.strftime(timeformat)
         return (load_date, load_time)
+
     elif float(job_data.tsize) <= 26:
         if job_data.dtime <= '11:00':
             load_date = datetime.datetime.strptime(
                 job_data.ddate, dateformat)-datetime.timedelta(days=1)
             load_date = load_date.strftime(dateformat)
-            load_time = delivery_time - datetime.timedelta(hours=20,
-                                                           minutes=30)
+            time_diff = medium_load_time - delivery_time
+            load_time = delivery_time + time_diff
+            load_time = load_time.strftime(timeformat)
+        elif job_data.dtime > '19:00':
+            load_date = job_data.ddate
+            time_diff = delivery_time - medium_load_time
+            load_time = delivery_time - time_diff
             load_time = load_time.strftime(timeformat)
         else:
             load_date = job_data.ddate
@@ -370,12 +376,19 @@ def calc_load_date(job_data):
                                                                minutes=30)
             load_time = load_time.strftime(timeformat)
         return (load_date, load_time)
+
     elif float(job_data.tsize) >= 36:
         if job_data.dtime <= '12:00':
             load_date = datetime.datetime.strptime(
                 job_data.ddate, dateformat)-datetime.timedelta(days=1)
             load_date = load_date.strftime(dateformat)
-            load_time = delivery_time - datetime.timedelta(hours=22)
+            time_diff = large_load_time - delivery_time
+            load_time = delivery_time + time_diff
+            load_time = load_time.strftime(timeformat)
+        elif job_data.dtime > '19:00':
+            load_date = job_data.ddate
+            time_diff = delivery_time - large_load_time
+            load_time = delivery_time - time_diff
             load_time = load_time.strftime(timeformat)
         else:
             load_date = job_data.ddate
@@ -417,8 +430,9 @@ def calc_unload_date(job_data):
                 job_data.ctime, timeformat) + datetime.timedelta(hours=3)
             unload_time = unload_time.strftime(timeformat)
         return (unload_date, unload_time)
+
     elif float(job_data.tsize) <= 26:
-        if job_data.ctime >= '13:00':
+        if job_data.ctime >= '14:00':
             unload_date = datetime.datetime.strptime(
                 job_data.cdate, dateformat)+datetime.timedelta(days=1)
             unload_date = unload_date.strftime(dateformat)
