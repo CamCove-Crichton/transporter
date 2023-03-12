@@ -47,6 +47,17 @@ class JobInputs:
         return [self.jname, int(self.ord_no), float(self.tsize), self.ddate,
                 self.dtime, self.cdate, self.ctime]
 
+    def description(self):
+        """
+        Returns all the detials in a descriptive easy to read
+        bit of information for the user
+        """
+        job_description = f"Job Name: {self.jname}\n\
+ORD#: {self.ord_no}\nTruck Size: {self.tsize}\nDelivery Date: {self.ddate}\n\
+Delivery Time: {self.dtime}\nCollection Date: {self.cdate}\n\
+Collection Time: {self.ctime}"
+        return job_description
+
 
 # Idea & code from code insitute - love-sandwiches walkthrough project
 def get_job_name():
@@ -311,7 +322,9 @@ def validate_time(time_data):
 def calc_load_date(job_data):
     """
     A function to calculate the loading date,
-    using the data from the user
+    using the data from the user and predetermined times for
+    warehouse employee woking hours so trucks are not loading
+    late at night or in the small hours of the morning
     """
 
     print("\nCalculating loading details...\n")
@@ -319,13 +332,22 @@ def calc_load_date(job_data):
     dateformat = '%d-%m-%Y'
     timeformat = '%H:%M'
     delivery_time = datetime.datetime.strptime(job_data.dtime, timeformat)
+    small_load_time = datetime.datetime.strptime('16:00', timeformat)
+    medium_load_time = '15:00'
+    large_load_time = '14:00'
 
     if float(job_data.tsize) <= 15:
         if job_data.dtime <= '10:00':
             load_date = datetime.datetime.strptime(
                 job_data.ddate, dateformat)-datetime.timedelta(days=1)
             load_date = load_date.strftime(dateformat)
-            load_time = delivery_time - datetime.timedelta(hours=17)
+            time_diff = small_load_time - delivery_time
+            load_time = delivery_time + time_diff
+            load_time = load_time.strftime(timeformat)
+        elif job_data.dtime > '19:00':
+            load_date = job_data.ddate
+            time_diff = delivery_time - small_load_time
+            load_time = delivery_time - time_diff
             load_time = load_time.strftime(timeformat)
         else:
             load_date = job_data.ddate
@@ -455,9 +477,9 @@ def main():
     col_time = get_col_time()
     job_inputs = JobInputs(job_name, ord_num, truck_size, del_date, del_time,
                            col_date, col_time)
-    print(job_inputs.details())
+    print(job_inputs.description())
     loading_date, loading_time = calc_load_date(job_inputs)
-    print(f"\nLoading date calculated: {loading_date}")
+    print(f"Loading date calculated: {loading_date}")
     print(f"Loading time calculated: {loading_time}\n")
     unloading_date, unloading_time = calc_unload_date(job_inputs)
     print(f"Unloading date calculated: {unloading_date}")
