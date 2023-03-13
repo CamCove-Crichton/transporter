@@ -150,7 +150,7 @@ def validate_ord_input(int_data):
         values_list = SHEET.worksheet("transport_details")
         values = values_list.col_values(2)
         # Below code idea from GeeksforGeeks website
-        if (int_data in values):
+        if int_data in values:
             raise ValueError(
                 f"ORD{int_data} already exists"
             )
@@ -197,7 +197,7 @@ def validate_truck_input(float_data):
     try:
         truck_sizes = ['7.5', '10', '12', '15', '18', '26', '36', '44']
         # Below code idea from GeeksforGeeks website
-        if (float_data in truck_sizes):
+        if float_data in truck_sizes:
             print("Truck size is valid\n")
         else:
             raise ValueError(
@@ -504,8 +504,30 @@ def update_transport_details(job_data):
     print("Job details added successfully!\n")
 
 
+def search_jobs():
+    """
+    A fucntion to allow the user to search for the job details
+    by the order number
+    """
+    print('To lookup a jobs transport details, enter the order number')
+    print('Example: 12345\n')
+    values_list = SHEET.worksheet("transport_details")
+    values = values_list.col_values(2)
+    search_num = input('Enter the order number here: \n')
+
+    if search_num in values:
+        cell = SHEET.worksheet("transport_details").find(search_num)
+        job_list = SHEET.worksheet("transport_details").row_values(cell)
+        print(cell)
+        print(job_list)
+
+
 # Idea and code from code institute - love-sandwiches walkthrough project
 def main():
+    """
+    A function to hold and call all the functions required
+    for the program to run
+    """
     job_name = get_job_name()
     ord_num = get_ord_no()
     truck_size = get_truck_size()
@@ -530,4 +552,5 @@ def main():
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
-main()
+# main()
+search_jobs()
