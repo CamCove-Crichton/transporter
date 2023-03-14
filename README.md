@@ -44,6 +44,7 @@ Transporter is a Python terminal program designed to take job input with regards
 - I then began working on the logic for calculating the loading time, and worked it into the same function as the calculating load date, to return a tuple, and then in the main function created two variable to unpack the returned values to utilise later
 - Afterwards, I then added in a similar calculation to the function for calculating the unloading date, so it works out the date and the time and returns to a tuple, and again in the main function, added in two variables to unpack the values to utilise later
 - Added in a subclass to use the super classes existing properties and add in the calculated loading and unloading details to then use all of these results and user input to update the Transporter google sheet
+- Added in a function to lookup existing jobs on the Transporter google sheet to return all the job information
 
 
 
