@@ -534,6 +534,18 @@ def search_jobs():
         print(call_back.full_description())
 
 
+def edit_entries(job_data):
+    """
+    A function to allow the user to edit an entry if anything
+    is incorrect or has changed from the original data
+    """
+    print('Would you like to update any of the previously entered details?')
+    print('Press "y" for Yes')
+    print('Press "n" for No')
+
+    edit_choice = input('Enter your choice here: \n')
+
+
 def program_loop():
     """
     A function to loop through either the main job entry functions
