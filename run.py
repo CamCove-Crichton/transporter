@@ -534,6 +534,29 @@ def search_jobs():
         print(call_back.full_description())
 
 
+def program_loop():
+    """
+    A function to loop through either the main job entry functions
+    to add a new job to the transporter google sheet,
+    or to lookup an existing job on the transporter google sheet
+    """
+    while True:
+        print('Would you like to enter a new job, lookup\
+              an existing job or exit?')
+        print('Press 1 to enter a new job')
+        print('Press 2 to lookup an exisiting job')
+        print('Press "q" to exit\n')
+
+        user_choice = input('Enter your choice here: \n')
+
+        if user_choice == '1':
+            main()
+        elif user_choice == '2':
+            search_jobs()
+        elif user_choice == 'q':
+            break
+
+
 # Idea and code from code institute - love-sandwiches walkthrough project
 def main():
     """
@@ -564,5 +587,5 @@ def main():
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
-# main()
-search_jobs()
+main()
+program_loop()
