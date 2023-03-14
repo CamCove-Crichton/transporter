@@ -81,6 +81,16 @@ class FullJobDetails(JobInputs):
                 self.dtime, self.cdate, self.ctime, self.ldate, self.ltime,
                 self.unl_date, self.unl_time]
 
+    def full_description(self):
+        """
+        Returns the string from the superclass description method,
+        and then adds on additional information about the loading
+        and unloading dates and times
+        """
+        return f"{super().description()}\nLoading Date: {self.ldate}\n\
+Loading Time: {self.ltime}\nUnloading Date: {self.unl_date}\n\
+Unloading Time: {self.unl_time}\n"
+
 
 # Idea & code from code insitute - love-sandwiches walkthrough project
 def get_job_name():
@@ -504,6 +514,7 @@ def update_transport_details(job_data):
     print("Job details added successfully!\n")
 
 
+# Assistance from the gspread docs on finding a cell and getting row values
 def search_jobs():
     """
     A fucntion to allow the user to search for the job details
@@ -517,9 +528,10 @@ def search_jobs():
 
     if search_num in values:
         cell = SHEET.worksheet("transport_details").find(search_num)
-        job_list = SHEET.worksheet("transport_details").row_values(cell)
-        print(cell)
-        print(job_list)
+        job_list = SHEET.worksheet("transport_details").row_values(cell.row)
+        j, o, t, d1, t1, d2, t2, d3, t3, d4, t4 = job_list
+        call_back = FullJobDetails(j, o, t, d1, t1, d2, t2, d3, t3, d4, t4)
+        print(call_back.full_description())
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
