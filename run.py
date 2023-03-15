@@ -521,25 +521,25 @@ def edit_selection(num_data):
     """
     if num_data == '1':
         job_name = get_job_name()
-        print(job_name)
+        return job_name
     elif num_data == '2':
         ord_num = get_ord_no()
-        print(ord_num)
+        return ord_num
     elif num_data == '3':
         truck_size = get_truck_size()
-        print(truck_size)
+        return truck_size
     elif num_data == '4':
         del_date = get_del_date()
-        print(del_date)
+        return del_date
     elif num_data == '5':
         del_time = get_del_time()
-        print(del_time)
+        return del_time
     elif num_data == '6':
         col_date = get_col_date()
-        print(col_date)
+        return col_date
     elif num_data == '7':
         col_time = get_col_time()
-        print(col_time)
+        return col_time
 
 
 # Assistance from the gspread docs on finding a cell and getting row values
@@ -560,7 +560,8 @@ def search_jobs():
         j, o, t, d1, t1, d2, t2, d3, t3, d4, t4 = job_list
         call_back = FullJobDetails(j, o, t, d1, t1, d2, t2, d3, t3, d4, t4)
         print(call_back.full_description())
-        edit_entries(call_back.full_description())
+        entry_update = edit_entries(call_back.full_description())
+        print(entry_update)
 
 
 def edit_entries(job_data):
@@ -580,7 +581,8 @@ def edit_entries(job_data):
         print('Example: 1')
         print(job_data)
         num_selection = input('Select a number to edit the detail here: \n')
-        edit_selection(num_selection)
+        update = edit_selection(num_selection)
+        return update
     elif edit_choice == 'n':
         program_loop()
 
