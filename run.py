@@ -52,10 +52,10 @@ class JobInputs:
         Returns all the detials in a descriptive easy to read
         bit of information for the user
         """
-        job_description = f"Job Name: {self.jname}\n\
-ORD#: {self.ord_no}\nTruck Size: {self.tsize}\nDelivery Date: {self.ddate}\n\
-Delivery Time: {self.dtime}\nCollection Date: {self.cdate}\n\
-Collection Time: {self.ctime}"
+        job_description = f"1) Job Name: {self.jname}\n\
+2) ORD#: {self.ord_no}\n3) Truck Size: {self.tsize}\n\
+4) Delivery Date: {self.ddate}\n5) Delivery Time: {self.dtime}\n\
+6) Collection Date: {self.cdate}\n7) Collection Time: {self.ctime}"
         return job_description
 
 
@@ -87,9 +87,9 @@ class FullJobDetails(JobInputs):
         and then adds on additional information about the loading
         and unloading dates and times
         """
-        return f"{super().description()}\nLoading Date: {self.ldate}\n\
-Loading Time: {self.ltime}\nUnloading Date: {self.unl_date}\n\
-Unloading Time: {self.unl_time}\n"
+        return f"{super().description()}\n8) Loading Date: {self.ldate}\n\
+9) Loading Time: {self.ltime}\n10) Unloading Date: {self.unl_date}\n\
+11) Unloading Time: {self.unl_time}\n"
 
 
 # Idea & code from code insitute - love-sandwiches walkthrough project
@@ -514,6 +514,34 @@ def update_transport_details(job_data):
     print("Job details added successfully!\n")
 
 
+def edit_selection(num_data):
+    """
+    A function to handle the users selection to edit specific entries
+    for a job
+    """
+    if num_data == '1':
+        job_name = get_job_name()
+        print(job_name)
+    elif num_data == '2':
+        ord_num = get_ord_no()
+        print(ord_num)
+    elif num_data == '3':
+        truck_size = get_truck_size()
+        print(truck_size)
+    elif num_data == '4':
+        del_date = get_del_date()
+        print(del_date)
+    elif num_data == '5':
+        del_time = get_del_time()
+        print(del_time)
+    elif num_data == '6':
+        col_date = get_col_date()
+        print(col_date)
+    elif num_data == '7':
+        col_time = get_col_time()
+        print(col_time)
+
+
 # Assistance from the gspread docs on finding a cell and getting row values
 def search_jobs():
     """
@@ -532,6 +560,7 @@ def search_jobs():
         j, o, t, d1, t1, d2, t2, d3, t3, d4, t4 = job_list
         call_back = FullJobDetails(j, o, t, d1, t1, d2, t2, d3, t3, d4, t4)
         print(call_back.full_description())
+        edit_entries(call_back.full_description())
 
 
 def edit_entries(job_data):
@@ -544,6 +573,16 @@ def edit_entries(job_data):
     print('Press "n" for No')
 
     edit_choice = input('Enter your choice here: \n')
+
+    if edit_choice == 'y':
+        print('Please select a number from the list below')
+        print('Please select and edit one option at a time')
+        print('Example: 1')
+        print(job_data)
+        num_selection = input('Select a number to edit the detail here: \n')
+        edit_selection(num_selection)
+    elif edit_choice == 'n':
+        program_loop()
 
 
 def program_loop():
