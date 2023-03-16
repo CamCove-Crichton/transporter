@@ -554,30 +554,46 @@ def search_jobs():
     values = values_list.col_values(2)
     search_num = input('Enter the order number here: \n')
 
-    if search_num in values:
-        cell = SHEET.worksheet("transport_details").find(search_num)
-        job_list = SHEET.worksheet("transport_details").row_values(cell.row)
-        j, o, t, d1, t1, d2, t2, d3, t3, d4, t4 = job_list
-        call_back = FullJobDetails(j, o, t, d1, t1, d2, t2, d3, t3, d4, t4)
-        print(call_back.full_description())
-        edited_cb = edit_entries(call_back.description(), call_back, cell.row)
-        edited_cb.ldate, edited_cb.ltime = calc_load_date(edited_cb)
-        print(f"Loading date calculated: {edited_cb.ldate}")
-        print(f"Loading time calculated: {edited_cb.ltime}\n")
-        SHEET.worksheet('transport_details').update_cell(
-                cell.row, 8, edited_cb.ldate)
-        SHEET.worksheet('transport_details').update_cell(
-                cell.row, 9, edited_cb.ltime)
-        print('Loading date and time updated sucessfully!\n')
-        edited_cb.unl_date, edited_cb.unl_time = calc_unload_date(edited_cb)
-        print(f"Unloading date calculated: {edited_cb.unl_date}")
-        print(f"Unloading time calculated: {edited_cb.unl_time}\n")
-        SHEET.worksheet('transport_details').update_cell(
-                cell.row, 10, edited_cb.unl_date)
-        SHEET.worksheet('transport_details').update_cell(
-                cell.row, 11, edited_cb.unl_time)
-        print('Unloading date and time updated sucessfully!\n')
-        print(edited_cb.full_description())
+    try:
+        int(search_num)
+        if len(search_num) != 5:
+            raise ValueError(
+                f" Order no. must have 5 numbers,\
+you entered {len(search_num)}"
+            )
+        if search_num in values:
+            cell = SHEET.worksheet("transport_details").find(search_num)
+            job_list = SHEET.worksheet("transport_details").row_values(
+                cell.row)
+            j, o, t, d1, t1, d2, t2, d3, t3, d4, t4 = job_list
+            call_back = FullJobDetails(j, o, t, d1, t1, d2, t2, d3, t3, d4, t4)
+            print(call_back.full_description())
+            edited_cb = edit_entries(
+                call_back.description(), call_back, cell.row)
+            edited_cb.ldate, edited_cb.ltime = calc_load_date(edited_cb)
+            print(f"Loading date calculated: {edited_cb.ldate}")
+            print(f"Loading time calculated: {edited_cb.ltime}\n")
+            SHEET.worksheet('transport_details').update_cell(
+                    cell.row, 8, edited_cb.ldate)
+            SHEET.worksheet('transport_details').update_cell(
+                    cell.row, 9, edited_cb.ltime)
+            print('Loading date and time updated sucessfully!\n')
+            edited_cb.unl_date, edited_cb.unl_time = calc_unload_date(
+                edited_cb)
+            print(f"Unloading date calculated: {edited_cb.unl_date}")
+            print(f"Unloading time calculated: {edited_cb.unl_time}\n")
+            SHEET.worksheet('transport_details').update_cell(
+                    cell.row, 10, edited_cb.unl_date)
+            SHEET.worksheet('transport_details').update_cell(
+                    cell.row, 11, edited_cb.unl_time)
+            print('Unloading date and time updated sucessfully!\n')
+            print(edited_cb.full_description())
+        else:
+            raise ValueError(
+                f"ORD{search_num} doesn't exist"
+            )
+    except ValueError as e:
+        print(f"Invalid entry {e}, please try again")
 
 
 def edit_entries(job_data, job_class, transport_row):
