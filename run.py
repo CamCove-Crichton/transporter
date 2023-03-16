@@ -679,18 +679,25 @@ def program_loop():
     while True:
         print('Would you like to enter a new job, lookup\
               an existing job or exit?')
-        print('Press 1 to enter a new job')
-        print('Press 2 to lookup an exisiting job')
+        print('Press "1" to enter a new job')
+        print('Press "2" to lookup an exisiting job')
         print('Press "q" to exit\n')
 
         user_choice = input('Enter your choice here: \n')
 
-        if user_choice == '1':
-            main()
-        elif user_choice == '2':
-            search_jobs()
-        elif user_choice == 'q':
-            break
+        try:
+            if user_choice == '1':
+                main()
+            elif user_choice == '2':
+                search_jobs()
+            elif user_choice.lower() == 'q':
+                break
+            else:
+                raise ValueError(
+                    f'"{user_choice}" is not an option'
+                )
+        except ValueError as e:
+            print(f"Invalid entry {e}, please try again")
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
