@@ -514,15 +514,14 @@ def update_transport_details(job_data):
     print("Job details added successfully!\n")
 
 
-def edit_selection(num_data, job_class):
+def edit_selection(num_data):
     """
     A function to handle the users selection to edit specific entries
     for a job
     """
     if num_data == '1':
         job_name = get_job_name()
-        job_class.jname = job_name
-        return job_class.jname
+        return job_name
     elif num_data == '2':
         ord_num = get_ord_no()
         return ord_num
@@ -561,10 +560,10 @@ def search_jobs():
         j, o, t, d1, t1, d2, t2, d3, t3, d4, t4 = job_list
         call_back = FullJobDetails(j, o, t, d1, t1, d2, t2, d3, t3, d4, t4)
         print(call_back.full_description())
-        edit_entries(call_back.full_description(), call_back)
+        edit_entries(call_back.full_description(), call_back, cell.row)
 
 
-def edit_entries(job_data, job_class):
+def edit_entries(job_data, job_class, transport_row):
     """
     A function to allow the user to edit an entry if anything
     is incorrect or has changed from the original data
@@ -581,10 +580,13 @@ def edit_entries(job_data, job_class):
         print('Example: 1')
         print(job_data)
         num_selection = input('Select a number to edit the detail here: \n')
-        update = edit_selection(num_selection, job_class)
+        update = edit_selection(num_selection)
         if num_selection == '1':
             job_class.jname = update
-            update_transport_details(job_class.details())
+            print('Updating Job Name...\n')
+            SHEET.worksheet('transport_details').update_cell(
+                transport_row, 1, job_class.jname)
+            print('Job Name updated sucessfully!\n')
     elif edit_choice == 'n':
         program_loop()
 
