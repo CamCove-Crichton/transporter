@@ -123,8 +123,8 @@ def validate_jname_input(string):
                 f"Job name must consist of 3 or more characters\n"
                 f"You entered {len(string)} character(s)"
             )
-    except ValueError as e:
-        print(f"Invaild entry: {e}, please try again\n")
+    except ValueError as error:
+        print(f"Invaild entry: {error}, please try again\n")
         return False
 
     return True
@@ -169,8 +169,8 @@ def validate_ord_input(int_data):
             raise ValueError(
                 f"Order no. must have 5 numbers, you entered {len(int_data)}"
             )
-    except ValueError as e:
-        print(f"Invalid entry: {e}, please try again\n")
+    except ValueError as error:
+        print(f"Invalid entry: {error}, please try again\n")
         return False
 
     return True
@@ -220,8 +220,8 @@ def validate_truck_input(float_data):
                 f"Truck size must be one of the sizes from the accepted list"
                 f"You entered '{float_data}'"
             )
-    except ValueError as e:
-        print(f"Invalid entry: {e}, please try again\n")
+    except ValueError as error:
+        print(f"Invalid entry: {error}, please try again\n")
         return False
 
     return True
@@ -280,8 +280,8 @@ def validate_date_input(date_data):
                 f"The date {date_data} is incorrect"
                 f"It must be in a DD-MM-YYYY format"
             )
-    except ValueError as e:
-        print(f"Invaild entry {e}, please try again. \n")
+    except ValueError as error:
+        print(f"Invaild entry {error}, please try again. \n")
         return False
 
     return True
@@ -344,8 +344,8 @@ def validate_time(time_data):
                 f"The {time_data} is incorrect"
                 f"It must be in a 24 hour, HH:MM format."
             )
-    except ValueError as e:
-        print(f"Invalid entry {e}, please try again. \n")
+    except ValueError as error:
+        print(f"Invalid entry {error}, please try again. \n")
         return False
 
     return True
@@ -595,8 +595,8 @@ you entered {len(search_num)}"
                 raise ValueError(
                     f"ORD{search_num} doesn't exist"
                 )
-        except ValueError as e:
-            print(f"Invalid entry {e}, please try again")
+        except ValueError as error:
+            print(f"Invalid entry {error}, please try again")
 
 
 def edit_entries(job_data, job_class, transport_row):
