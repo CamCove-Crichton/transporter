@@ -614,62 +614,70 @@ def edit_entries(job_data, job_class, transport_row):
 
         try:
             if edit_choice.lower() == 'y':
-                print('Please select a number from the list below')
-                print('Please select and edit one option at a time')
-                print('Example: 1')
-                print(job_data)
-                num_selection = input(
-                    'Select a number to edit the detail here: \n')
-                update = edit_selection(num_selection)
-                if num_selection == '1':
-                    job_class.jname = update
-                    print('Updating Job Name...\n')
-                    SHEET.worksheet('transport_details').update_cell(
-                        transport_row, 1, job_class.jname)
-                    print('Job Name updated sucessfully!\n')
-                    return job_class
-                elif num_selection == '2':
-                    job_class.ord_no = update
-                    print('Updating Order number...\n')
-                    SHEET.worksheet('transport_details').update_cell(
-                        transport_row, 2, job_class.ord_no)
-                    print('Order number updated sucessfully!\n')
-                    return job_class
-                elif num_selection == '3':
-                    job_class.tsize = update
-                    print('Updating Truck size...\n')
-                    SHEET.worksheet('transport_details').update_cell(
-                        transport_row, 3, job_class.tsize)
-                    print('Truck size updated sucessfully!\n')
-                    return job_class
-                elif num_selection == '4':
-                    job_class.ddate = update
-                    print('Updating Delivery date...\n')
-                    SHEET.worksheet('transport_details').update_cell(
-                        transport_row, 4, job_class.ddate)
-                    print('Delivery date updated sucessfully!\n')
-                    return job_class
-                elif num_selection == '5':
-                    job_class.dtime = update
-                    print('Updating Delivery time...\n')
-                    SHEET.worksheet('transport_details').update_cell(
-                        transport_row, 5, job_class.dtime)
-                    print('Delivery time updated sucessfully!\n')
-                    return job_class
-                elif num_selection == '6':
-                    job_class.cdate = update
-                    print('Updating Collection date...\n')
-                    SHEET.worksheet('transport_details').update_cell(
-                        transport_row, 6, job_class.cdate)
-                    print('Collection date updated sucessfully!\n')
-                    return job_class
-                elif num_selection == '7':
-                    job_class.ctime = update
-                    print('Updating Collection time...\n')
-                    SHEET.worksheet('transport_details').update_cell(
-                        transport_row, 7, job_class.ctime)
-                    print('Collection time updated sucessfully!\n')
-                    return job_class
+                while True:
+                    print('Please select a number from the list below')
+                    print('Please select and edit one option at a time')
+                    print('Example: 1 or 2 or 3 or 4 or 5 or 6 or 7')
+                    print(job_data)
+                    num_selection = input(
+                        'Select a number to edit the detail here: \n')
+                    try:
+                        update = edit_selection(num_selection)
+                        if num_selection == '1':
+                            job_class.jname = update
+                            print('Updating Job Name...\n')
+                            SHEET.worksheet('transport_details').update_cell(
+                                transport_row, 1, job_class.jname)
+                            print('Job Name updated sucessfully!\n')
+                            return job_class
+                        elif num_selection == '2':
+                            job_class.ord_no = update
+                            print('Updating Order number...\n')
+                            SHEET.worksheet('transport_details').update_cell(
+                                transport_row, 2, job_class.ord_no)
+                            print('Order number updated sucessfully!\n')
+                            return job_class
+                        elif num_selection == '3':
+                            job_class.tsize = update
+                            print('Updating Truck size...\n')
+                            SHEET.worksheet('transport_details').update_cell(
+                                transport_row, 3, job_class.tsize)
+                            print('Truck size updated sucessfully!\n')
+                            return job_class
+                        elif num_selection == '4':
+                            job_class.ddate = update
+                            print('Updating Delivery date...\n')
+                            SHEET.worksheet('transport_details').update_cell(
+                                transport_row, 4, job_class.ddate)
+                            print('Delivery date updated sucessfully!\n')
+                            return job_class
+                        elif num_selection == '5':
+                            job_class.dtime = update
+                            print('Updating Delivery time...\n')
+                            SHEET.worksheet('transport_details').update_cell(
+                                transport_row, 5, job_class.dtime)
+                            print('Delivery time updated sucessfully!\n')
+                            return job_class
+                        elif num_selection == '6':
+                            job_class.cdate = update
+                            print('Updating Collection date...\n')
+                            SHEET.worksheet('transport_details').update_cell(
+                                transport_row, 6, job_class.cdate)
+                            print('Collection date updated sucessfully!\n')
+                            return job_class
+                        elif num_selection == '7':
+                            job_class.ctime = update
+                            print('Updating Collection time...\n')
+                            SHEET.worksheet('transport_details').update_cell(
+                                transport_row, 7, job_class.ctime)
+                            print('Collection time updated sucessfully!\n')
+                            return job_class
+                        else:
+                            raise ValueError(
+                                f'"{num_selection}" is not an option'
+                            )
+                    except ValueError as error:
+                        print(f'Invalid entry {error}, please try again')
                 break
             elif edit_choice.lower() == 'n':
                 program_loop()
