@@ -750,5 +750,5 @@ def main():
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
-# main()
+main()
 program_loop()
