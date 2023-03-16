@@ -272,17 +272,9 @@ def validate_date_input(date_data):
     Inside the try, checks for a valid date entry in the format
     of DD-MM-YYYY
     """
-    today = datetime.datetime.now()
-    date_input = datetime.datetime.strptime(date_data, '%d-%m-%Y')
     try:
-        if date_input:
-            if date_input >= today:
-                print("Date is valid \n")
-            else:
-                raise ValueError(
-                    f"The date {date_data} is invalid"
-                    f" The date cannot be before {today.strftime('%d-%m-%Y')}"
-                )
+        if datetime.datetime.strptime(date_data, '%d-%m-%Y'):
+            print("Date is valid \n")
         else:
             raise ValueError(
                 f"The date {date_data} is incorrect"
