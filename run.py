@@ -560,7 +560,24 @@ def search_jobs():
         j, o, t, d1, t1, d2, t2, d3, t3, d4, t4 = job_list
         call_back = FullJobDetails(j, o, t, d1, t1, d2, t2, d3, t3, d4, t4)
         print(call_back.full_description())
-        edit_entries(call_back.full_description(), call_back, cell.row)
+        edited_cb = edit_entries(call_back.description(), call_back, cell.row)
+        loading_date, loading_time = calc_load_date(edited_cb)
+        print(f"Loading date calculated: {loading_date}")
+        print(f"Loading time calculated: {loading_time}\n")
+        SHEET.worksheet('transport_details').update_cell(
+                cell.row, 8, edited_cb.ldate)
+        SHEET.worksheet('transport_details').update_cell(
+                cell.row, 9, edited_cb.ltime)
+        print('Loading date and time updated sucessfully!\n')
+        unloading_date, unloading_time = calc_unload_date(edited_cb)
+        print(f"Unloading date calculated: {unloading_date}")
+        print(f"Unloading time calculated: {unloading_time}\n")
+        SHEET.worksheet('transport_details').update_cell(
+                cell.row, 10, edited_cb.unl_date)
+        SHEET.worksheet('transport_details').update_cell(
+                cell.row, 11, edited_cb.unl_time)
+        print(edited_cb.details())
+        print(cell.row)
 
 
 def edit_entries(job_data, job_class, transport_row):
@@ -587,6 +604,7 @@ def edit_entries(job_data, job_class, transport_row):
             SHEET.worksheet('transport_details').update_cell(
                 transport_row, 1, job_class.jname)
             print('Job Name updated sucessfully!\n')
+            return job_class
         elif num_selection == '2':
             job_class.ord_no = update
             print('Updating Order number...\n')
@@ -680,5 +698,5 @@ def main():
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
-main()
+# main()
 program_loop()
