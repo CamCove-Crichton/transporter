@@ -46,6 +46,7 @@ Transporter is a Python terminal program designed to take job input with regards
 - Added in a subclass to use the super classes existing properties and add in the calculated loading and unloading details to then use all of these results and user input to update the Transporter google sheet
 - Added in a function to lookup existing jobs on the Transporter google sheet to return all the job information
 - I then added in a function to loop through the program, for the user to choose either to enter a new job, or to lookup an existing job or to quit the program altogether
+- The user then has the option to update the previously input details for the specific job they have called back
 
 
 
@@ -87,3 +88,7 @@ Transporter is a Python terminal program designed to take job input with regards
 
 [W3Schools](https://www.w3schools.com/python/python_tuples_unpack.asp)
 - Refresher on unpacking tuples
+
+[gspread documentation](https://docs.gspread.org/en/v5.7.0/user-guide.html#cell-object)
+- Information on how to get values from a row or column
+- Information on how to update a cell value
