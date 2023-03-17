@@ -719,8 +719,8 @@ def edit_entries(job_data, job_class, transport_row):
                 raise ValueError(
                     f'"{edit_choice}" is not an option'
                 )
-        except ValueError as e:
-            print(f'Invalid entry {e}, please try again')
+        except ValueError as error:
+            print(f'Invalid entry {error}, please try again')
 
 
 def program_loop():
@@ -749,8 +749,8 @@ def program_loop():
                 raise ValueError(
                     f'"{user_choice}" is not an option'
                 )
-        except ValueError as e:
-            print(f"Invalid entry {e}, please try again")
+        except ValueError as error:
+            print(f"Invalid entry {error}, please try again")
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
