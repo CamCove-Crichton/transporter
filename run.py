@@ -1,3 +1,7 @@
+"""
+Importing datetime to be able to validate dates and times
+and do arithmetic with dates and times
+"""
 import datetime
 import gspread  # from code institue love-sandwiches walkthrough
 # import Credentials class code from code institute love-sandwiches
@@ -228,25 +232,6 @@ def validate_truck_input(float_data):
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
-# def get_del_date():
-#     """
-#     A function for the user to input the required delivery date
-#     It will repeat the request for data until it is valid
-#     """
-#     while True:
-#         print("Please enter the delivery date.")
-#         print("It must be in DD-MM-YYYY format.")
-#         print("Example: 21-03-2023\n")
-
-#         del_date_str = input('Enter the delivery date here: \n')
-
-#         if validate_date_input(del_date_str):
-#             break
-
-#     return del_date_str
-
-
-# Idea and code from code institute - love-sandwiches walkthrough project
 def get_del_date():
     """
     A function for the user to input the required delivery date
@@ -317,47 +302,6 @@ def get_col_date(delivery_data):
             break
 
     return col_date_str
-
-
-# def get_col_date():
-#     """
-#     A function to for the user to input the required collection date
-#     for the job
-#     It will repeat the request for data until it is valid
-#     """
-#     while True:
-#         print("Please enter the collection date.")
-#         print("It must be in DD-MM-YYYY format")
-#         print("Example: 21-03-2023\n")
-
-#         col_date_str = input('Enter the collection date here: \n')
-
-#         if validate_date_input(col_date_str):
-#             break
-
-#     return col_date_str
-
-
-# Assistance from stackoverflow & C-Sharp Corner for validation
-# Idea and code from code institute - love-sandwiches walkthrough project
-# def validate_date_input(date_data):
-#     """
-#     Inside the try, checks for a valid date entry in the format
-#     of DD-MM-YYYY
-#     """
-#     try:
-#         if datetime.datetime.strptime(date_data, '%d-%m-%Y'):
-#             print("Date is valid \n")
-#         else:
-#             raise ValueError(
-#                 f"The date {date_data} is incorrect"
-#                 f"It must be in a DD-MM-YYYY format"
-#             )
-#     except ValueError as error:
-#         print(f"Invaild entry {error}, please try again. \n")
-#         return False
-
-#     return True
 
 
 # Assistance from stackoverflow & C-Sharp Corner for validation
