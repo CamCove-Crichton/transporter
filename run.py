@@ -257,10 +257,22 @@ def get_del_date():
         print("It must be in DD-MM-YYYY format.")
         print("Example: 21-03-2023\n")
 
+        date_format = '%d-%m-%Y'
+        today = datetime.datetime.now()
         del_date_str = input('Enter the delivery date here: \n')
 
         try:
             validate_date_input(del_date_str)
+            delivery_date = datetime.datetime.strptime(
+                del_date_str, date_format)
+            if delivery_date >= today:
+                print('Date is valid\n')
+            else:
+                raise ValueError(
+                    f'The date {delivery_date.strftime(date_format)}\
+ is invalid\n'
+                    f'Date cannot be before {today.strftime(date_format)}'
+                )
         except ValueError as error:
             print(f"Invaild entry {error}, please try again. \n")
         else:
