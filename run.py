@@ -282,7 +282,7 @@ def get_del_date():
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
-def get_col_date():
+def get_col_date(delivery_data):
     """
     A function to for the user to input the required collection date
     for the job
@@ -293,10 +293,24 @@ def get_col_date():
         print("It must be in DD-MM-YYYY format")
         print("Example: 21-03-2023\n")
 
+        date_format = '%d-%m-%Y'
+        delivery_date = datetime.datetime.strptime(
+            delivery_data, date_format)
         col_date_str = input('Enter the collection date here: \n')
 
         try:
             validate_date_input(col_date_str)
+            collect_date = datetime.datetime.strptime(
+                col_date_str, date_format)
+            if collect_date >= delivery_date:
+                print('Date is valid\n')
+            else:
+                raise ValueError(
+                    f'The date {collect_date.strftime(date_format)}\
+ is invalid\n'
+                    f'Date cannot be before\
+ {delivery_date.strftime(date_format)}'
+                )
         except ValueError as error:
             print(f"Invaild entry {error}, please try again. \n")
         else:
@@ -354,7 +368,7 @@ def validate_date_input(date_data):
     of DD-MM-YYYY
     """
     if datetime.datetime.strptime(date_data, '%d-%m-%Y'):
-        print("Date is valid \n")
+        print("Date format is valid \n")
     else:
         raise ValueError(
             f"The date {date_data} is incorrect"
@@ -589,7 +603,7 @@ def update_transport_details(job_data):
     print("Job details added successfully!\n")
 
 
-def edit_selection(num_data):
+def edit_selection(num_data, delivery_data):
     """
     A function to handle the users selection to edit specific entries
     for a job
@@ -610,7 +624,7 @@ def edit_selection(num_data):
         del_time = get_del_time()
         return del_time
     elif num_data == '6':
-        col_date = get_col_date()
+        col_date = get_col_date(delivery_data)
         return col_date
     elif num_data == '7':
         col_time = get_col_time()
@@ -697,7 +711,7 @@ def edit_entries(job_data, job_class, transport_row):
                     num_selection = input(
                         'Select a number to edit the detail here: \n')
                     try:
-                        update = edit_selection(num_selection)
+                        update = edit_selection(num_selection, job_class.ddate)
                         if num_selection == '1':
                             job_class.jname = update
                             print('Updating Job Name...\n')
@@ -806,7 +820,7 @@ def main():
     truck_size = get_truck_size()
     del_date = get_del_date()
     del_time = get_del_time()
-    col_date = get_col_date()
+    col_date = get_col_date(del_date)
     col_time = get_col_time()
     job_inputs = JobInputs(job_name, ord_num, truck_size, del_date, del_time,
                            col_date, col_time)
