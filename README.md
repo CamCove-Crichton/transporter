@@ -23,7 +23,19 @@ Transporter is a Python terminal program designed to take job input with regards
 
 ## How to input data:
 
-
+1. Press the "Run Program" button, the program will initiate, and prompt you with a welcome message
+2. You will then be prompted to enter a job name, type the name and press the return key (Enter)
+3. You will then be prompted to enter an order number for the job, type the number and press the return key
+4. You will then be prompted to enter the required delivery date, enter the date and press the return key
+5. You will then be prompted to enter the required delivery time, enter the time and press the return key
+6. You will then be prompted to enter the required collection date, enter the date and press the return key
+7. You will then be prompted to enter the required collection time, enter the time and then press the return key
+8. The program will then display the entered data, calculate the loading date & time, then print out the calculated loading date and time. The program will then calculate the unloading date & time, then print out thecalculated unloading date & time.
+9. Once the loading and unloading details have been calculated, the details will be updated on the Transporter google sheet
+10. You will then have the choice to either enter a new job, lookup an existing job or quit
+11. If you choose to enter a new job, you will go back through the above process
+12. If you would like you can then choice to edit a previously entered detail, and it will then update the job on the Transporter google sheet
+13. If you choose to quit, the program will exit and print out a goodbye message
 
 ## Features:
 *text with screen grabs*
@@ -130,6 +142,7 @@ while True:
 - Love Sandwiches walkthrough project
 - Python module content
 - Tutor support
+- Code Institute deploy walkthrough on deploying with Heroku
 
 [GeeksforGeeks](https://www.geeksforgeeks.org/check-if-element-exists-in-list-in-python/)
 - Reminder on how to search for a value in a list of values
