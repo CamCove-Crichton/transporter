@@ -169,6 +169,13 @@ while True:
 
 ## Testing:
 
+- I tested the program going through all job input validations to check any incorrect data entered was caught and handled, and repeated the request for data until the data passed validation
+- I tested the option to enter a new job worked by selecting '1' and going through all the prompts to enter data for a new job
+- I tested that when being asked to enter a new job, lookup an existing job that any other entries, apart from the accepted options, are caught and handled and the request for the correct data is repeated until the data is valid
+- When wanting to search for an existing job, I tested the validation of entering the correct and existing order number, and if not that the error is caught and handled, and repeats the request until the data is valid
+- When an existing job is called back, and the option to edit a job is presented, I tested that only the two options are accepted, and if any other data is entered, that it is caught and handled and that it repeats the request for the data entry until it is valid
+- When you select to edit a job, the options are presented as to what data you would like to edit, and I tested that only the presented options are valid and if any other data is entered, that the error is caught and handled, and that the request for data is repeated until the data is valid
+
 ### Bugs
 
 - Solved bug: Adding in a validation for testing the date for delivery is not before the current date. I had to refactor the function to have the "try" & "except" statments in the main delivery date function and then to break the loop use an "else" statement with the "try" & "except" statements
