@@ -744,6 +744,7 @@ def program_loop():
             elif user_choice == '2':
                 search_jobs()
             elif user_choice.lower() == 'q':
+                print('\nThank you, goodbye :D\n')
                 break
             else:
                 raise ValueError(
@@ -783,5 +784,8 @@ def main():
 
 
 # Idea and code from code institute - love-sandwiches walkthrough project
+print('Welcome to the Transporter!\n')
+print('A program to calculate the loading and unloading logistics')
+print("Follow the input prompts and we'll do the rest\n")
 main()
 program_loop()
