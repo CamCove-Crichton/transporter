@@ -15,7 +15,11 @@ Transporter is a Python terminal program designed to take job input with regards
 8. Searched for my repo and clicked "Connect"
 9. I enabled 'Automatic Deploys' and then clicked "Deploy Branch" having the "main" branch selected
 
-*iamresponsive image*
+![deployed transporter program](/assets/README%20images/AmIResponsive%20Transporter.png)
+
+### Lucid chart on Transporter logic
+
+![lucid chart flow diagram](/assets/README%20images/Lucidchart%20Transporter.png)
 
 ## How to input data:
 
@@ -78,7 +82,9 @@ Transporter is a Python terminal program designed to take job input with regards
 ### Unfixed Bugs
 
 
-## Validator Testing:
+### Validator Testing:
+
+![CI Python Linter results](/assets/README%20images/Linter%20Transporter.png)
 
 
 ## Credits:
