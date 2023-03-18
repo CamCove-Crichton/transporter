@@ -641,19 +641,19 @@ def edit_entries(job_data, job_class, transport_row):
         print('Would you like to update any of the previously\
  entered details?')
         print('Press "y" for Yes')
-        print('Press "n" for No')
+        print('Press "n" for No\n')
 
         edit_choice = input('Enter your choice here: \n')
 
         try:
             if edit_choice.lower() == 'y':
                 while True:
-                    print('Please select a number from the list below')
+                    print('\nPlease select a number from the list below')
                     print('Please select and edit one option at a time')
-                    print('Example: 1 or 2 or 3 or 4 or 5 or 6 or 7')
+                    print('Example: 1 or 2 or 3 or 4 or 5 or 6 or 7\n')
                     print(job_data)
                     num_selection = input(
-                        'Select a number to edit the detail here: \n')
+                        '\nSelect a number to edit the detail here: \n')
                     try:
                         update = edit_selection(num_selection, job_class.ddate)
                         if num_selection == '1':
