@@ -2,7 +2,18 @@
 
 Transporter is a Python terminal program designed to take job input with regards to transport delivery & collection details, and calculate what date and time the truck should be scheduled to load and unload at the depot. Once data is entered, it will be printed to the Transporter google sheet. A user also has the ability to look up specific jobs using the order number and the data will be printed to the Python terminal and will have the choice to edit a previously entered detail of the job that has been called back.
 
-*deployment*
+## Deployment
+- [Click here](https://the-transporter.herokuapp.com/) to run the Transporter program
+
+1. Updated the requirements.txt file for Heroku deployment
+2. Went to [Heroku](https://dashboard.heroku.com/) and signed into my account
+3. Selected "Create App", gave it a name, selected the region and press "Create App"
+4. Went into the "Settings" tab
+5. In the "Settings" tab, I setup my Config Vars and added my buildpacks
+6. Went to the "Deploy" tab
+7. In the "Deploy" tab, I selected 'GitHub' as the deployment method
+8. Searched for my repo and clicked "Connect"
+9. I enabled 'Automatic Deploys' and then clicked "Deploy Branch" having the "main" branch selected
 
 *iamresponsive image*
 
