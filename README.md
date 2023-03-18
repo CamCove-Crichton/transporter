@@ -4,6 +4,7 @@ Transporter is a Python terminal program designed to take job input with regards
 
 ## Deployment
 - [Click here](https://the-transporter.herokuapp.com/) to run the Transporter program
+- [Transporter Google Sheet](https://docs.google.com/spreadsheets/d/1f_xF_uiQK5HB6QEjH51WdxOuRsHBkV7JK9m2OJt-ZGg/edit#gid=0)
 
 1. Updated the requirements.txt file for Heroku deployment
 2. Went to [Heroku](https://dashboard.heroku.com/) and signed into my account
