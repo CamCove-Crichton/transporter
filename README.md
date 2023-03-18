@@ -79,8 +79,12 @@ Transporter is a Python terminal program designed to take job input with regards
 
 ### Bugs
 
+- Solved bug: Adding in a validation for testing the date for delivery is not before the current date. I had to refactor the function to have the "try" & "except" statments in the main delivery date function and then to break the loop use an "else" statement with the "try" & "except" statements
+- Solved bug: Adding in a validation for the collection date, to test the collection date is not before the delivery date. I have to refactor the function again to have the "try" & "except" statements in the main collection function and to take a parameter, to use the delivery date as the argument. I then also had to use the "else" statement with the "try" & "except" statements to break the while loop when no errors are raised
+
 ### Unfixed Bugs
 
+- When you run through the full job entry and then when you select to lookup a job, enter a job number, it calls up the job and asks if you want to edit the previously entered details, if you select "n", it then takes you back to the loop if you want to enter a new job, lookup an existing job or quit, and if at that stage you select to quit, the program seems to crash - Due to time constraints I have not managed to rectify this bug yet
 
 ### Validator Testing:
 
