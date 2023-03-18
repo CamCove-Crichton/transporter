@@ -731,7 +731,7 @@ def program_loop():
     """
     while True:
         print('Would you like to enter a new job, lookup\
-              an existing job or exit?')
+ an existing job or exit?')
         print('Press "1" to enter a new job')
         print('Press "2" to lookup an exisiting job')
         print('Press "q" to exit\n')
