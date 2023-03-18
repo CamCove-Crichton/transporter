@@ -175,15 +175,17 @@ while True:
 - When wanting to search for an existing job, I tested the validation of entering the correct and existing order number, and if not that the error is caught and handled, and repeats the request until the data is valid
 - When an existing job is called back, and the option to edit a job is presented, I tested that only the two options are accepted, and if any other data is entered, that it is caught and handled and that it repeats the request for the data entry until it is valid
 - When you select to edit a job, the options are presented as to what data you would like to edit, and I tested that only the presented options are valid and if any other data is entered, that the error is caught and handled, and that the request for data is repeated until the data is valid
+- I then tested to see that when given the option to quit at any of the stages you are given the choice, that the program displays a goodbye message and exits the program
 
 ### Bugs
 
 - Solved bug: Adding in a validation for testing the date for delivery is not before the current date. I had to refactor the function to have the "try" & "except" statments in the main delivery date function and then to break the loop use an "else" statement with the "try" & "except" statements
 - Solved bug: Adding in a validation for the collection date, to test the collection date is not before the delivery date. I have to refactor the function again to have the "try" & "except" statements in the main collection function and to take a parameter, to use the delivery date as the argument. I then also had to use the "else" statement with the "try" & "except" statements to break the while loop when no errors are raised
+- When you run through the full job entry and then when you select to lookup a job, enter a job number, it calls up the job and asks if you want to edit the previously entered details, if you select "n", it then takes you back to the loop if you want to enter a new job, lookup an existing job or quit, and if at that stage you select to quit, the program seems to crash - Solved by using the quit function to stop the computer from trying to go back to the other function to finish running through the remaining code
 
 ### Unfixed Bugs
 
-- When you run through the full job entry and then when you select to lookup a job, enter a job number, it calls up the job and asks if you want to edit the previously entered details, if you select "n", it then takes you back to the loop if you want to enter a new job, lookup an existing job or quit, and if at that stage you select to quit, the program seems to crash - Due to time constraints I have not managed to rectify this bug yet
+- No unfixed bugs that I am aware of
 
 ### Validator Testing:
 
