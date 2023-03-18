@@ -745,7 +745,7 @@ def program_loop():
                 search_jobs()
             elif user_choice.lower() == 'q':
                 print('\nThank you, goodbye :D\n')
-                break
+                quit()
             else:
                 raise ValueError(
                     f'"{user_choice}" is not an option'
