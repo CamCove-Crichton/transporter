@@ -63,6 +63,39 @@ Transporter is a Python terminal program designed to take job input with regards
 - I then added in a function to loop through the program, for the user to choose either to enter a new job, or to lookup an existing job or to quit the program altogether
 - The user then has the option to update the previously input details for the specific job they have called back
 - I also then added in a welcome message when the program starts and a leaving message for when the user decides to exit the program
+- I refactored the functions for the user input for the delivery date and the collection date to have the "try" & "except" statements in these functions, as they are the main function, and within the "try" statements, it should call any other functions to run to try for validation. I would have liked to do this with all the functions, but due to time constraints, I did not have enough time to do so
+
+```
+{
+while True:
+        print("Please enter the delivery date.")
+        print("It must be in DD-MM-YYYY format.")
+        print("Example: 21-03-2023\n")
+
+        date_format = '%d-%m-%Y'
+        today = datetime.datetime.now()
+        del_date_str = input('Enter the delivery date here: \n')
+
+        try:
+            validate_date_input(del_date_str)
+            delivery_date = datetime.datetime.strptime(
+                del_date_str, date_format)
+            if delivery_date >= today:
+                print('Date is valid\n')
+            else:
+                raise ValueError(
+                    f'The date {delivery_date.strftime(date_format)}\
+ is invalid\n'
+                    f'Date cannot be before {today.strftime(date_format)}'
+                )
+        except ValueError as error:
+            print(f"Invaild entry {error}, please try again. \n")
+        else:
+            break
+
+    return del_date_str
+}
+```
 
 
 
@@ -117,3 +150,50 @@ Transporter is a Python terminal program designed to take job input with regards
 [gspread documentation](https://docs.gspread.org/en/v5.7.0/user-guide.html#cell-object)
 - Information on how to get values from a row or column
 - Information on how to update a cell value
+
+### Code Credits:
+
+[Code Institute](https://codeinstitute.net/)
+- Code for the majority of the user input functions taken from Code Institutes - Love Sandwiches walkthrough project
+```
+{
+    def get_job_name():
+    """
+    A function to get the job name from the user
+    It will repeat the request for the user input until the data is valid
+    """
+    while True:
+        print("Please enter a job name")
+        print("The job name must consist of three or more characters")
+        print("Example: Job Name 1\n")
+
+        job_str = input('Enter the job name here: \n')
+
+        if validate_jname_input(job_str):
+            print("Job name is valid\n")
+            break
+
+    return job_str
+}
+```
+
+- Code for the majority of the validation functions taken from Code Institutes - Love Sandwiches walkthrough project
+```
+{
+    def validate_jname_input(string):
+    """
+    Inside the try, checks if there are three characters or more
+    """
+    try:
+        if len(string) <= 3:
+            raise ValueError(
+                f"Job name must consist of 3 or more characters\n"
+                f"You entered {len(string)} character(s)"
+            )
+    except ValueError as error:
+        print(f"Invaild entry: {error}, please try again\n")
+        return False
+
+    return True
+}
+```
