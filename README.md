@@ -34,11 +34,58 @@ Transporter is a Python terminal program designed to take job input with regards
 9. Once the loading and unloading details have been calculated, the details will be updated on the Transporter google sheet
 10. You will then have the choice to either enter a new job, lookup an existing job or quit
 11. If you choose to enter a new job, you will go back through the above process
-12. If you would like you can then choice to edit a previously entered detail, and it will then update the job on the Transporter google sheet
+12. If you would like you can then choice to edit a previously entered detail, and it will then update and display the full job details again with the change and update the job on the Transporter google sheet
 13. If you choose to quit, the program will exit and print out a goodbye message
 
 ## Features:
-*text with screen grabs*
+
+- Input prompt for the Job Name
+![enter the job name](/assets/README%20images/Enter%20Job%20Name.png)
+
+- Input prompt for the Order Number
+![enter the order number](/assets/README%20images/Enter%20order%20number.png)
+
+- Input prompt for the Truck Size
+![enter the truck size](/assets/README%20images/Enter%20Truck%20Size.png)
+
+- Input prompt for the Delivery Date
+![enter the delivery date](/assets/README%20images/Enter%20delivery%20date.png)
+
+- Input prompt for the Delivery Time
+![enter the delivery time](/assets/README%20images/Enter%20delivery%20time.png)
+
+- Input prompt for the Collection Date
+![enter the collection date](/assets/README%20images/Enter%20collection%20date.png)
+
+- Input prompt for the Collection Time
+![enter the collection time](/assets/README%20images/Enter%20collection%20time.png)
+
+- Transporter job details with calculated loading and unloaing details
+![user input details with calculated dates and times](/assets/README%20images/User%20inputs%20and%20calculated%20dates%20%26%20times.png)
+
+- Transporter google sheet view once job has been successfully added
+![transporter google sheet](/assets/README%20images/Transporter%20google%20sheet.png)
+
+- Options to choose to add a new job, lookup an existing job or quit program
+![add new job, lookup job or quit program](/assets/README%20images/Program%20loop.png)
+
+- Lookup an existing job by order number
+![enter existing order number](/assets/README%20images/Search%20by%20order%20number.png)
+
+- Full job details of existing job, and option to edit the previously entered details
+![existing job details and option to edit](/assets/README%20images/Full%20job%20details%2C%20would%20you%20like%20to%20edit.png)
+
+- Options to choose which previously entered detail to edit
+![options to choose which detail to edit](/assets/README%20images/Select%20data%20to%20edit.png)
+
+- Full job details with the new change
+![full job details with newly edited change](/assets/README%20images/Edited%20job%20full%20details.png)
+
+- Updated job details on the Transporter google sheet
+![updated job on Transporter google sheet](/assets/README%20images/Updated%20job%20detail.png)
+
+- Goodbye message
+![goodbye message](/assets/README%20images/Goodbye%20message.png)
 
 ## Development:
 
