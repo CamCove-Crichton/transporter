@@ -169,6 +169,7 @@ while True:
 
 ## Testing:
 
+- I ran all my code through the [CI Python Linter](https://pep8ci.herokuapp.com/) and it came back with no errors
 - I tested the program going through all job input validations to check any incorrect data entered was caught and handled, and repeated the request for data until the data passed validation
 - I tested the option to enter a new job worked by selecting '1' and going through all the prompts to enter data for a new job
 - I tested that when being asked to enter a new job, lookup an existing job that any other entries, apart from the accepted options, are caught and handled and the request for the correct data is repeated until the data is valid
