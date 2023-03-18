@@ -47,14 +47,18 @@ Transporter is a Python terminal program designed to take job input with regards
 - Added in a function to lookup existing jobs on the Transporter google sheet to return all the job information
 - I then added in a function to loop through the program, for the user to choose either to enter a new job, or to lookup an existing job or to quit the program altogether
 - The user then has the option to update the previously input details for the specific job they have called back
+- I also then added in a welcome message when the program starts and a leaving message for when the user decides to exit the program
 
 
 
 ## Future Development:
-*text ideas on how to develop further*
+1. I would like to be able to develop time slots for the trucks, depending on the truck size, so instead of just stipulating a time to begin the load or unload, it also has a time the loading or unloading has to be finished by
+2. A further development on the truck time slots would be to then have the transporter check the google sheet for conflicting time slots, return a message to say the time slot is not available and to offer an alternative time slot
+3. I would also like to develop it further to allow the user to input the cost being charged to the client, and the cost quoted by the transport company and to have the program calculate the amount of profit or loss being made in a percentage format
 
 ## Data Model:
-*text on the data model used*
+- I decided to use a class as my data model. The class stores all the input the user enters, and has a method to display all the inputs in a readable format to the user
+- I also used a sub-class of the main class to hold all the calculated data, so this can be appended using the method in the main class as well as extending onto it with its own method to add to the details of the job in a readable format to the user
 
 ## Testing:
 
